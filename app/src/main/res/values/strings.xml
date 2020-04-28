@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Explorr</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorite Locations</string>
+    <string name="title_nearby">Nearby</string>
+    <string name="hotel_search">Search for Hotels</string>
+    <string name="attractions_search">Search for attractions</string>
+    <string name="search_hint">Search a location</string>
+    <string name="search">Search</string>
+</resources>
