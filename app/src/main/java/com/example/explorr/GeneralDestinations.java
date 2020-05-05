@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 public class GeneralDestinations extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class GeneralDestinations extends AppCompatActivity {
         Intent intent = getIntent();
         if(Intent.ACTION_SEARCH.equals(intent.getStringExtra(SearchManager.QUERY))){
             String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.d("QUERYSTRING:",query);
         }
     }
 }
