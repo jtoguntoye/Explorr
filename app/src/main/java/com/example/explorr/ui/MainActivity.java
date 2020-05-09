@@ -1,6 +1,7 @@
 package com.example.explorr.ui;
 
 import android.app.SearchManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
@@ -47,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         //get the searchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search_icon).getActionView();
-        searchView.setSearchableInfo(searchManager != null ? searchManager.getSearchableInfo(getComponentName()) : null);
+        searchView.setSearchableInfo(searchManager != null ?
+                searchManager.getSearchableInfo(new ComponentName(this, GeneralDestinationsActivity.class)) : null);
         return true;
     }
 }

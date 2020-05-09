@@ -1,5 +1,7 @@
 package com.example.explorr.DataSource;
 
+import android.util.Log;
+
 import com.example.explorr.API.TripAdvisorInterface;
 import com.example.explorr.Model.DestinationSpecificResponse;
 import com.example.explorr.Model.Destinations;
@@ -36,6 +38,7 @@ mTripAdvisorInterface.getLocationResponse(location).enqueue
         if(response.isSuccessful()){
             if(response.body()!=null){
             locationId = response.body().getLocations().get(0).getLocationObject().getLocation_id();
+            Log.d("Source locationID:", locationId);
             }
 
 

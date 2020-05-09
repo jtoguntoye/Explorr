@@ -77,8 +77,8 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
         public void bind(List<Destinations> destinationSpecificList) {
-            destinationCategory.setText(destinationSpecificList
-                    .get(0).getDestinationType());
+            destinationCategory.setText(destinationSpecificList.get(1)
+                    .getDestinationType());
 
             //Create an instance of the adapter for the horizontal recyclerview that
             //displays list of destinations for each category

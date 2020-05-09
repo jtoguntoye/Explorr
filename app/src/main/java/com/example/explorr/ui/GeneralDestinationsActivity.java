@@ -34,6 +34,12 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_destinations);
 
+        Intent intent = getIntent();
+        if(Intent.ACTION_SEARCH.equals(intent.getAction())){
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Log.d("QUERYSTRING:", query);
+            GroupedList = new ArrayList<>();
+
         generalDestinationsVerticalAdapter =
                 new GeneralDestinationsVerticalAdapter(this, new ArrayList<List<Destinations>>()) ;
         RecyclerView verticalRecyclerView = findViewById(R.id.destinations__vertical_recyclerView);
@@ -43,15 +49,11 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
 
 
-
-        Intent intent = getIntent();
-        if(Intent.ACTION_SEARCH.equals(intent.getStringExtra(SearchManager.QUERY))){
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.d("QUERYSTRING:",query);
-
             //get location_id from TripAdvisor API
             locationId = generalDestinationsViewModel.getLocationId(query);
+           // Log.d("LocationID", locationId);
             //get the hotels, restaurants and attractions for the queried location
+
             generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
                     (List<Destinations> destinationList) ->{
                         GroupedList.add(destinationList);
