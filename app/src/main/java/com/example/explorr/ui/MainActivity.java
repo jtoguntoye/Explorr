@@ -1,4 +1,4 @@
-package com.example.explorr;
+package com.example.explorr.ui;
 
 import android.app.SearchManager;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 
+import com.example.explorr.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

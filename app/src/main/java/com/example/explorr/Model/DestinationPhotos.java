@@ -2,13 +2,17 @@ package com.example.explorr.Model;
 
 import com.google.gson.annotations.SerializedName;
 
-class DestinationPhotos {
+public class DestinationPhotos {
 
     @SerializedName("images")
     private ImagesClass images;
 
+    public ImagesClass getImages() {
+        return images;
+    }
 
-    private class ImagesClass {
+
+    public class ImagesClass {
 
         @SerializedName("small")
         private SmallImage small;
@@ -35,7 +39,7 @@ class DestinationPhotos {
         }
     }
 
-    private class SmallImage{
+    public class SmallImage{
         @SerializedName("width")
         private String Width;
 
@@ -76,7 +80,7 @@ class DestinationPhotos {
 
     }
 
-    private class OriginalImage {
+    public class OriginalImage {
 
         @SerializedName("width")
         private String Width;

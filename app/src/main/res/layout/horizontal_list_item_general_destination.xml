@@ -18,7 +18,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/image_destination"
+                android:id="@+id/location_image"
                 android:layout_width="match_parent"
                 android:layout_height="110dp"
                 android:contentDescription="@string/destination_image"
@@ -26,14 +26,13 @@
                 android:scaleType="centerCrop"/>
             
             <TextView
-                android:id="@+id/text_destination_name"
+                android:id="@+id/text_location_name"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 tools:text="@string/app_name"
-                android:layout_below="@id/image_destination"
+                android:layout_below="@id/location_image"
                 android:layout_centerHorizontal="true"
-                android:autoSizeMinTextSize="8sp"
-                android:autoSizeMaxTextSize="@dimen/max_text_Size_destination_name"
+                android:textSize="18sp"
                 android:textColor="@color/primary_text"
                 android:textStyle="bold"/>
 
