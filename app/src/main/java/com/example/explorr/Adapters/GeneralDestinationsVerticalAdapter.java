@@ -34,7 +34,6 @@ public class GeneralDestinationsVerticalAdapter extends
     public void setAdapterGroupedList(List<List<Destinations>> adapterGroupedList){
         destinationGroupList = adapterGroupedList;
         notifyDataSetChanged();
-
     }
 
     @NonNull
@@ -61,12 +60,13 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
 
-    public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
+
+            public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
             HorizontalRecyclerAdapter.DestinationClickHandler{
 
         private TextView destinationCategory;
         private RecyclerView horizontalRecyclerView;
-        List<Destinations> destinationList;
+
 
 
         public VerticalViewHolder(@NonNull View itemView) {
@@ -77,8 +77,11 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
         public void bind(List<Destinations> destinationSpecificList) {
-            destinationCategory.setText(destinationSpecificList.get(1)
+            if(destinationSpecificList.get(0).getDestinationType()!=null)
+            destinationCategory.setText(destinationSpecificList.get(0)
                     .getDestinationType());
+            else destinationCategory.setText("Places");
+
 
             //Create an instance of the adapter for the horizontal recyclerview that
             //displays list of destinations for each category

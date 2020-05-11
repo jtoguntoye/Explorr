@@ -31,6 +31,13 @@ public class Locations {
         @SerializedName("longitude")
         private String longitude;
 
+        public String getTimeZone() {
+            return timeZone;
+        }
+
+        @SerializedName("timezone")
+        private String timeZone;
+
 
         public String getLocation_id() {
             return location_id;

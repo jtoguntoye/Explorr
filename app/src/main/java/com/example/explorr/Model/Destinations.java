@@ -28,7 +28,7 @@ public class Destinations {
     @SerializedName("website")
     private String website;
 
-    @SerializedName("photos")
+    @SerializedName("photo")
     private DestinationPhotos photos;
 
 

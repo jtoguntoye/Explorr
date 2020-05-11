@@ -3,32 +3,42 @@ package com.example.explorr;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.explorr.DataSource.TripAdvisorSource;
 import com.example.explorr.Model.Destinations;
 import java.util.List;
 import javax.inject.Inject;
 
 
 public class GeneralDestinationsViewModel  extends ViewModel {
-    private  DestinationsRepository destinationsRepository;
-    private MutableLiveData<List<Destinations>> hotelList;
+    private TripAdvisorSource tripAdvisorSource;
+
 
     @Inject
-    public GeneralDestinationsViewModel(Application application, DestinationsRepository destinationsRepository){
-        this.destinationsRepository = destinationsRepository;
-      hotelList = new MutableLiveData<>();
+    public GeneralDestinationsViewModel(Application application, TripAdvisorSource tripAdvisorSource){
+        this.tripAdvisorSource= tripAdvisorSource;
+
 
     }
 
-    public String getLocationId(String locationQuery){
-        return destinationsRepository.getLocationId(locationQuery);
+    public  LiveData<String> getLocationId(String locationQuery){
+
+        return tripAdvisorSource.getLocationResponse(locationQuery);
+
     }
 
 
-    public MutableLiveData<List<Destinations>> getHotelListResult(String locationId){
-        hotelList.postValue(destinationsRepository.getHotelResult(locationId));
-        return hotelList;
+    public LiveData<List<Destinations>> getHotelListResult(String locationId){
+        return   tripAdvisorSource.getHotelDestinationResponse(locationId);
+
+    }
+
+    public LiveData<List<Destinations>> getRestaurantResult(String locationID){
+        return tripAdvisorSource.getRestaurantResponse(locationID);
+    }
+
+    public LiveData<List<Destinations>> getAttractionsResult(String locationID) {
+        return tripAdvisorSource.getAttractionsResponse(locationID);
     }
 }

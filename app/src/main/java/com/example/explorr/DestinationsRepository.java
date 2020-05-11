@@ -1,5 +1,7 @@
 package com.example.explorr;
 
+import android.util.Log;
+
 import com.example.explorr.DataSource.TripAdvisorSource;
 import com.example.explorr.Model.Destinations;
 
@@ -9,6 +11,7 @@ import javax.inject.Inject;
 
 public class DestinationsRepository {
     private TripAdvisorSource tripAdvisorSource;
+    private String locationID;
 
     @Inject
     public DestinationsRepository(TripAdvisorSource tripAdvisorSource){
@@ -16,10 +19,13 @@ public class DestinationsRepository {
     }
 
     public String getLocationId(String locationQuery){
-        return tripAdvisorSource.getLocationResponse(locationQuery);
+
+        //locationID =tripAdvisorSource.getLocationResponse(locationQuery);
+
+        return locationID;
     }
 
-    public List<Destinations> getHotelResult(String locationId){
-       return tripAdvisorSource.getDestinationSpecificResponse(locationId);
-    }
+   // public List<Destinations> getHotelResult(String locationId){
+       //return tripAdvisorSource.getDestinationSpecificResponse(locationId);
+   // }
 }

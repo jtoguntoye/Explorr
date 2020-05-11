@@ -1,6 +1,8 @@
 package com.example.explorr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,18 +32,23 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         ((myApplication) getApplicationContext()).appComponent.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_destinations);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
+        GroupedList = new ArrayList<>();
         Intent intent = getIntent();
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY);
             Log.d("QUERYSTRING:", query);
-            GroupedList = new ArrayList<>();
+
+
 
         generalDestinationsVerticalAdapter =
-                new GeneralDestinationsVerticalAdapter(this, new ArrayList<List<Destinations>>()) ;
+                new GeneralDestinationsVerticalAdapter(this, new ArrayList<>()) ;
         RecyclerView verticalRecyclerView = findViewById(R.id.destinations__vertical_recyclerView);
         verticalRecyclerView.setHasFixedSize(true);
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager
@@ -49,18 +56,48 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
 
 
-            //get location_id from TripAdvisor API
-            locationId = generalDestinationsViewModel.getLocationId(query);
-           // Log.d("LocationID", locationId);
-            //get the hotels, restaurants and attractions for the queried location
+           getlocationID(query);
 
+
+
+
+
+        }
+
+    }
+
+    //helper method to get the locationID
+    private void getlocationID(String query){
+        //get location_id from TripAdvisor API
+        generalDestinationsViewModel.getLocationId(query).observe(this, (String s) -> {
+           locationId =s;
+
+            Log.d("ActivityLocationID", locationId);
+
+            //get the hotels, restaurants and attractions for the queried location
             generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
                     (List<Destinations> destinationList) ->{
                         GroupedList.add(destinationList);
-                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
+                        Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+
 
                     });
-        }
+
+            generalDestinationsViewModel.getRestaurantResult(locationId).observe(this,
+                    (List<Destinations> desinationlist1)->{
+                GroupedList.add(desinationlist1);
+                Log.d("GroupSize:", String.valueOf(GroupedList.size()));
+                    });
+
+            generalDestinationsViewModel.getAttractionsResult(locationId).observe(this,
+                    (List<Destinations> destinationlist2) ->{
+                        GroupedList.add(destinationlist2);
+                        Log.d("GroupSize:", String.valueOf(GroupedList.size()));
+                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
+                    });
+
+        });
+
 
     }
 }

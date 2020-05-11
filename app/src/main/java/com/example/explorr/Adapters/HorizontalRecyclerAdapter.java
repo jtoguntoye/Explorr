@@ -67,16 +67,19 @@ public class HorizontalRecyclerAdapter  extends
 
         public void bind(Destinations destinations){
             locationName.setText(destinations.getDestinationName());
+            if(destinations.getPhotos()!=null){
             DestinationPhotos photos = destinations.getPhotos();
-            imageUrl =photos.getImages().getSmall().getUrl();
+            if(photos.getImages()!=null) {
+                imageUrl = photos.getImages().getSmall().getUrl();
 
-            Glide.with(itemView)
-                    .load(imageUrl)
-                    .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
-                    .into(locationThumbnail);
+                Glide.with(itemView)
+                        .load(imageUrl)
+                        .apply(RequestOptions.placeholderOf(R.color.colorPrimary))
+                        .into(locationThumbnail);
 
+            }
 
-
+        }
         }
 
         @Override
