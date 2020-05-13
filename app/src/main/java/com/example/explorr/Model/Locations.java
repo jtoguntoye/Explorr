@@ -18,9 +18,15 @@ public class Locations {
         this.locationObject = locationObject;
     }
 
+    public String getResult_type() {
+        return result_type;
+    }
 
 
     public static class LocationObject {
+
+        @SerializedName("name")
+        private String name;
 
         @SerializedName("location_id")
         private String location_id;
@@ -61,6 +67,10 @@ public class Locations {
 
         public void setLongitude(String longitude) {
             this.longitude = longitude;
+        }
+
+        public String getName() {
+            return name;
         }
     }
 }

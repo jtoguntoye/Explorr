@@ -5,9 +5,10 @@
     <dimen name="cardview_elevation">2dp</dimen>
     <dimen name="home_card_item_height">200dp</dimen>
     <dimen name="margin_list_item">1dp</dimen>
-    <dimen name="width_list_item_card">130dp</dimen>
-    <dimen name="height_list_item_card">130dp</dimen>
+    <dimen name="width_list_item_card">140dp</dimen>
+    <dimen name="height_list_item_card">140dp</dimen>
     <dimen name="max_text_Size_destination_name">18sp</dimen>
     <dimen name="margin_start_labels">3dp</dimen>
     <dimen name="margin_top_labels">20dp</dimen>
+    <dimen name="height_list_item_image">110dp</dimen>
 </resources>

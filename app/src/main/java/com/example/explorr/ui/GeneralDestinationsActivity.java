@@ -2,6 +2,7 @@ package com.example.explorr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,8 @@ import com.example.explorr.Adapters.GeneralDestinationsVerticalAdapter;
 import com.example.explorr.DependencyInjection.myApplication;
 import com.example.explorr.GeneralDestinationsViewModel;
 import com.example.explorr.Model.Destinations;
+import com.example.explorr.Model.LocationSearchResponse;
+import com.example.explorr.Model.Locations;
 import com.example.explorr.R;
 
 import java.util.ArrayList;
@@ -28,6 +31,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     GeneralDestinationsViewModel generalDestinationsViewModel;
     private String locationId;
     private List<List<Destinations>> GroupedList;
+    private LocationSearchResponse searchResponse;
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,6 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_general_destinations);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         GroupedList = new ArrayList<>();
         Intent intent = getIntent();
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
@@ -65,6 +68,14 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         }
 
     }
+
+
+
+
+
+
+
+
 
     //helper method to get the locationID
     private void getlocationID(String query){
@@ -100,4 +111,6 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
 
     }
+
 }
+

@@ -1,5 +1,6 @@
 package com.example.explorr.DataSource;
 
+import android.content.Context;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -11,8 +12,11 @@ import com.example.explorr.Model.Destinations;
 import com.example.explorr.Model.LocationSearchResponse;
 import com.example.explorr.Model.Locations;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -27,6 +31,8 @@ public class TripAdvisorSource {
             attractionSearchResult;
     private MutableLiveData<String> locationId;
 
+
+
     @Inject
     public TripAdvisorSource(TripAdvisorInterface TripAdvisorInterface){
     this.mTripAdvisorInterface = TripAdvisorInterface;
@@ -37,22 +43,44 @@ public class TripAdvisorSource {
 
 }
 
-public LiveData<String> getLocationResponse(String location){
 
-    mTripAdvisorInterface.getLocationResponse(location).enqueue
+/*
+    public LiveData<String> getLocationID(String locationQuery){
+
+
+
+        if(searchResponse.getValue().getLocations()!=null) {
+            List<Locations> locationsList = searchResponse.getValue().getLocations();
+
+            for(int i=0;i<locationsList.size(); i++){
+                if(locationsList.get(i).getResult_type().equals("geos")){
+                    if(locationsList.get(i).getLocationObject().getName().equals(locationQuery)){
+                        locationId.postValue(locationsList.get(i).getLocationObject().getLocation_id());
+                        break;
+                    }
+                }
+            }
+        }
+        return locationId;
+    }
+*/
+
+        public LiveData<String> getLocationResponseId(String location){
+
+            mTripAdvisorInterface.getLocationResponse(location).enqueue
         (new Callback<LocationSearchResponse>() {
     @Override
-    public void onResponse(Call<LocationSearchResponse> call, Response<LocationSearchResponse> response) {
-        if(response.isSuccessful()){
+    public void onResponse( Call<LocationSearchResponse> call, Response<LocationSearchResponse> response) {
+
             if(response.body()!=null){
-            locationId.postValue(response.body().getLocations().get(1).getLocationObject().getLocation_id());
 
+        locationId.postValue(Objects.requireNonNull(response.body()).getLocations().get(0).getLocationObject().getLocation_id());
+
+            Log.d("Source resp:","size is" +response.body().getLocations().size());
             }
-
-
         }
 
-    }
+
 
     @Override
     public void onFailure(Call<LocationSearchResponse> call, Throwable t) {
@@ -60,8 +88,12 @@ public LiveData<String> getLocationResponse(String location){
     }
 });
 
+
 return locationId;
 }
+
+
+
 
 
 public LiveData<List<Destinations>> getHotelDestinationResponse(String locationId){
@@ -110,7 +142,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
     public LiveData<List<Destinations>> getAttractionsResponse(String locationID) {
         mTripAdvisorInterface.getAttractionsResponse(locationID).enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
-            public void onResponse(Call<DestinationSpecificResponse> call, Response<DestinationSpecificResponse> response) {
+            public void onResponse(@NotNull Call<DestinationSpecificResponse> call, Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
                         attractionSearchResult.postValue(response.body().getDestinationsList());

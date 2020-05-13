@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.explorr.DataSource.TripAdvisorSource;
 import com.example.explorr.Model.Destinations;
+import com.example.explorr.Model.LocationSearchResponse;
+
 import java.util.List;
 import javax.inject.Inject;
 
@@ -24,9 +26,11 @@ public class GeneralDestinationsViewModel  extends ViewModel {
 
     public  LiveData<String> getLocationId(String locationQuery){
 
-        return tripAdvisorSource.getLocationResponse(locationQuery);
+        return tripAdvisorSource.getLocationResponseId(locationQuery);
 
     }
+
+
 
 
     public LiveData<List<Destinations>> getHotelListResult(String locationId){
@@ -41,4 +45,5 @@ public class GeneralDestinationsViewModel  extends ViewModel {
     public LiveData<List<Destinations>> getAttractionsResult(String locationID) {
         return tripAdvisorSource.getAttractionsResponse(locationID);
     }
+
 }
