@@ -47,7 +47,7 @@ public class TripAdvisorSource {
 /*
     public LiveData<String> getLocationID(String locationQuery){
 
-
+    String MatchedID=null; ;
 
         if(searchResponse.getValue().getLocations()!=null) {
             List<Locations> locationsList = searchResponse.getValue().getLocations();
@@ -55,15 +55,17 @@ public class TripAdvisorSource {
             for(int i=0;i<locationsList.size(); i++){
                 if(locationsList.get(i).getResult_type().equals("geos")){
                     if(locationsList.get(i).getLocationObject().getName().equals(locationQuery)){
-                        locationId.postValue(locationsList.get(i).getLocationObject().getLocation_id());
+                        MatchedID =(locationsList.get(i).getLocationObject().getLocation_id());
                         break;
                     }
                 }
             }
         }
+        locationId.postValue(MatchedID);
         return locationId;
     }
-*/
+    */
+
 
         public LiveData<String> getLocationResponseId(String location){
 

@@ -15,26 +15,28 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/location_image"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/height_list_item_image"
                 android:contentDescription="@string/destination_image"
-                tools:src="@drawable/ic_place_black_24dp"
-                android:scaleType="centerCrop"/>
-            
+                android:scaleType="centerCrop"
+                tools:src="@drawable/ic_place_black_24dp" />
+
             <TextView
                 android:id="@+id/text_location_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="@string/app_name"
                 android:layout_below="@id/location_image"
-                android:layout_centerHorizontal="true"
-                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="4dp"
+                android:fitsSystemWindows="false"
                 android:textColor="@color/primary_text"
-                android:textStyle="bold"/>
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="@string/app_name" />
 
         </RelativeLayout>
 

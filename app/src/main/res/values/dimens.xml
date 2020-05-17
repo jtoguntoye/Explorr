@@ -11,4 +11,5 @@
     <dimen name="margin_start_labels">3dp</dimen>
     <dimen name="margin_top_labels">20dp</dimen>
     <dimen name="height_list_item_image">110dp</dimen>
+    <dimen name="dimen_vertical_recycler_margin">12dp</dimen>
 </resources>

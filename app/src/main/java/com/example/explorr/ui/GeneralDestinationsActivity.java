@@ -36,8 +36,8 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
         ((myApplication) getApplicationContext()).appComponent.inject(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_destinations);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -95,8 +95,8 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                     });
 
             generalDestinationsViewModel.getRestaurantResult(locationId).observe(this,
-                    (List<Destinations> desinationlist1)->{
-                GroupedList.add(desinationlist1);
+                    (List<Destinations> destinationlist1)->{
+                GroupedList.add(destinationlist1);
                 Log.d("GroupSize:", String.valueOf(GroupedList.size()));
                     });
 

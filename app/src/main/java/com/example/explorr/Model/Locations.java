@@ -14,9 +14,7 @@ public class Locations {
         return locationObject;
     }
 
-    public void setLocationObject(LocationObject locationObject) {
-        this.locationObject = locationObject;
-    }
+
 
     public String getResult_type() {
         return result_type;
