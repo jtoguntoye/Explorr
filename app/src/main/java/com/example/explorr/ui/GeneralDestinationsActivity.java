@@ -61,10 +61,6 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
            getlocationID(query);
 
-
-
-
-
         }
 
     }

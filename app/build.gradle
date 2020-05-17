@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+//plugin for type-safety during navigation between destinations
+apply plugin: "androidx.navigation.safeargs"
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -38,6 +41,8 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui:2.2.2'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    //google play services location dependency
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
     //RecyclerView Dependency
     implementation 'com.android.support:recyclerview-v7:29.0.0'
 

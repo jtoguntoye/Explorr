@@ -31,6 +31,11 @@ public interface TripAdvisorInterface {
             @Query("location_id") String locationId
     );
 
+    @GET("hotels/list-by-latlng")
+    Call<DestinationSpecificResponse> getHotelsResponseByLatLng(
+            @Query("latitude") String latitude,
+            @Query("longitude") String longitude
+    );
 
 
 }

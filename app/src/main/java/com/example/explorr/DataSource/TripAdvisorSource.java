@@ -72,11 +72,13 @@ public class TripAdvisorSource {
             mTripAdvisorInterface.getLocationResponse(location).enqueue
         (new Callback<LocationSearchResponse>() {
     @Override
-    public void onResponse( Call<LocationSearchResponse> call, Response<LocationSearchResponse> response) {
+    public void onResponse( Call<LocationSearchResponse> call,
+                            Response<LocationSearchResponse> response) {
 
             if(response.body()!=null){
 
-        locationId.postValue(Objects.requireNonNull(response.body()).getLocations().get(0).getLocationObject().getLocation_id());
+        locationId.postValue(Objects.requireNonNull(response.body()).getLocations().
+                get(0).getLocationObject().getLocation_id());
 
             Log.d("Source resp:","size is" +response.body().getLocations().size());
             }
@@ -95,14 +97,13 @@ return locationId;
 }
 
 
-
-
-
 public LiveData<List<Destinations>> getHotelDestinationResponse(String locationId){
 
-        mTripAdvisorInterface.getHotelResponse(locationId).enqueue(new Callback<DestinationSpecificResponse>() {
+        mTripAdvisorInterface.getHotelResponse(locationId)
+                .enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
-            public void onResponse(Call<DestinationSpecificResponse> call, Response<DestinationSpecificResponse> response) {
+            public void onResponse(Call<DestinationSpecificResponse> call,
+                                   Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
                         HotelSearchResult.postValue(response.body().getDestinationsList());
@@ -122,9 +123,11 @@ public LiveData<List<Destinations>> getHotelDestinationResponse(String locationI
 
 
 public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
-        mTripAdvisorInterface.getRestaurantResponse(locationId).enqueue(new Callback<DestinationSpecificResponse>() {
+        mTripAdvisorInterface.getRestaurantResponse(locationId)
+                .enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
-            public void onResponse(Call<DestinationSpecificResponse> call, Response<DestinationSpecificResponse> response) {
+            public void onResponse(Call<DestinationSpecificResponse> call,
+                                   Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
                         restaurantSearchResult.postValue(response.body().getDestinationsList());
@@ -142,9 +145,11 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 }
 
     public LiveData<List<Destinations>> getAttractionsResponse(String locationID) {
-        mTripAdvisorInterface.getAttractionsResponse(locationID).enqueue(new Callback<DestinationSpecificResponse>() {
+        mTripAdvisorInterface.getAttractionsResponse(locationID)
+                .enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
-            public void onResponse(@NotNull Call<DestinationSpecificResponse> call, Response<DestinationSpecificResponse> response) {
+            public void onResponse(@NotNull Call<DestinationSpecificResponse> call,
+                                   Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
                         attractionSearchResult.postValue(response.body().getDestinationsList());
@@ -161,4 +166,36 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
         });
 
     return attractionSearchResult;}
+
+
+    //method to get list of hotels by longitude and latitude
+    public LiveData<List<Destinations>> getHotelsByLatLng(String lat, String longitude){
+            mTripAdvisorInterface.getHotelsResponseByLatLng(lat,longitude)
+                    .enqueue(new Callback<DestinationSpecificResponse>() {
+                @Override
+                public void onResponse(Call<DestinationSpecificResponse> call,
+                                       Response<DestinationSpecificResponse> response) {
+
+                    if(response.isSuccessful()){
+                        if(response.body()!=null){
+                            HotelSearchResult.postValue(response.body().getDestinationsList());
+
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<DestinationSpecificResponse> call, Throwable t) {
+                t.printStackTrace();
+                }
+            });
+
+    return HotelSearchResult;
+}
+
+
+
+
+
 }
