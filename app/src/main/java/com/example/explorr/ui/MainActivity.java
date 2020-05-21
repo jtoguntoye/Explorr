@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 
 
+import com.example.explorr.DependencyInjection.MainActivityComponent;
+import com.example.explorr.DependencyInjection.myApplication;
 import com.example.explorr.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -20,6 +22,9 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+    //keep a reference to the MainComponent here since the MainComponent is attached to the
+    //lifeycle of the MainActivity
+     public MainActivityComponent mainActivityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.parent_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //creation of the MainActivityComponent using the application graph
+        mainActivityComponent = ((myApplication) getApplicationContext())
+                .appComponent.mainActivityComponent().create();
+        mainActivityComponent.inject(this);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

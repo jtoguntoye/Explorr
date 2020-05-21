@@ -169,7 +169,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 
 
     //method to get list of hotels by longitude and latitude
-    public LiveData<List<Destinations>> getHotelsByLatLng(String lat, String longitude){
+    public LiveData<List<Destinations>> getHotelsByLatLng(double lat, double longitude){
             mTripAdvisorInterface.getHotelsResponseByLatLng(lat,longitude)
                     .enqueue(new Callback<DestinationSpecificResponse>() {
                 @Override
@@ -194,8 +194,55 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
     return HotelSearchResult;
 }
 
+ public LiveData<List<Destinations>> getRestaurantsByLatLng(double latitude, double longitude) {
+        mTripAdvisorInterface.getRestaurantResponseByLatLng(latitude,longitude)
+                .enqueue(new Callback<DestinationSpecificResponse>() {
+                    @Override
+                    public void onResponse(Call<DestinationSpecificResponse> call,
+                                           Response<DestinationSpecificResponse> response) {
 
+                        if(response.isSuccessful()){
+                            if(response.body()!=null){
+                                restaurantSearchResult.postValue(response.body().getDestinationsList());
 
+                            }
+                        }
 
+                    }
 
+                    @Override
+                    public void onFailure(Call<DestinationSpecificResponse> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+
+        return restaurantSearchResult;
+
+    }
+
+    public LiveData<List<Destinations>> getAttractionsByLatLng(double Lat, double Longitude){
+        mTripAdvisorInterface.getAttractionsResponseByLatLng(Lat,Longitude)
+                .enqueue(new Callback<DestinationSpecificResponse>() {
+                    @Override
+                    public void onResponse(Call<DestinationSpecificResponse> call,
+                                           Response<DestinationSpecificResponse> response) {
+
+                        if(response.isSuccessful()){
+                            if(response.body()!=null){
+                                attractionSearchResult.postValue(response.body().getDestinationsList());
+
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<DestinationSpecificResponse> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+
+        return attractionSearchResult;
+
+    }
 }

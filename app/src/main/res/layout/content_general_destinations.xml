@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_marginTop="@dimen/dimen_vertical_recycler_margin"
     android:id="@+id/parent_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">

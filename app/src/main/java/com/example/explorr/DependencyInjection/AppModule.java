@@ -13,6 +13,7 @@ public class AppModule {
     Application mApplication;
 
     public AppModule(Application application) {
+
         mApplication = application;
     }
 

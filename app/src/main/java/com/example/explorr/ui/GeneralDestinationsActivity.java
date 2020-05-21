@@ -31,7 +31,6 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     GeneralDestinationsViewModel generalDestinationsViewModel;
     private String locationId;
     private List<List<Destinations>> GroupedList;
-    private LocationSearchResponse searchResponse;
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +63,6 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         }
 
     }
-
-
-
-
-
 
 
 

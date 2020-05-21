@@ -47,8 +47,10 @@ public class GeneralDestinationsVerticalAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull VerticalViewHolder holder, int position) {
-        holder.bind(destinationGroupList.get(position));
-
+        if(destinationGroupList.size()!=0) {
+            holder.bind(destinationGroupList.get(position));
+        }
+        else{}
     }
 
     @Override
@@ -57,11 +59,7 @@ public class GeneralDestinationsVerticalAdapter extends
     }
 
 
-
-
-
-
-            public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
+    public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
             HorizontalRecyclerAdapter.DestinationClickHandler{
 
         private TextView destinationCategory;
@@ -77,25 +75,26 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
         public void bind(List<Destinations> destinationSpecificList) {
-            if(destinationSpecificList.get(0).getDestinationType()!=null)
-            destinationCategory.setText(destinationSpecificList.get(0)
-                    .getDestinationType());
-            else destinationCategory.setText("Places");
+            if (destinationSpecificList.size() != 0) {
+                if (destinationSpecificList.get(0).getDestinationType() != null)
+                    destinationCategory.setText(destinationSpecificList.get(0)
+                            .getDestinationType());
+                else destinationCategory.setText("Places");
 
 
-            //Create an instance of the adapter for the horizontal recyclerview that
-            //displays list of destinations for each category
-            HorizontalRecyclerAdapter horizontalRecyclerAdapter =
-                    new HorizontalRecyclerAdapter(destinationSpecificList,  this);
-            horizontalRecyclerView.setHasFixedSize(true);
-            horizontalRecyclerView.setLayoutManager(new
-                    LinearLayoutManager(context,RecyclerView.HORIZONTAL,false));
+                //Create an instance of the adapter for the horizontal recyclerview that
+                //displays list of destinations for each category
+                HorizontalRecyclerAdapter horizontalRecyclerAdapter =
+                        new HorizontalRecyclerAdapter(destinationSpecificList, this);
+                horizontalRecyclerView.setHasFixedSize(true);
+                horizontalRecyclerView.setLayoutManager(new
+                        LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 
-            horizontalRecyclerView.setAdapter(horizontalRecyclerAdapter);
+                horizontalRecyclerView.setAdapter(horizontalRecyclerAdapter);
 
 
+            }
         }
-
         @Override
         public void onDestinationClickListener(int position) {
 
