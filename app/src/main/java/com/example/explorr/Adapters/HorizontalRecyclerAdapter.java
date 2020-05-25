@@ -78,8 +78,10 @@ public class HorizontalRecyclerAdapter  extends
                         .into(locationThumbnail);
 
             }
-
         }
+            else{
+
+            }
         }
 
         @Override

@@ -72,28 +72,32 @@ public class NearbyLocationsFragment extends Fragment {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         GroupedList = new ArrayList<>();
+        generalDestinationsVerticalAdapter =
+                new GeneralDestinationsVerticalAdapter(getContext(), new ArrayList<>()) ;
 
-        View root = inflater.inflate(R.layout.fragment_nearby, container, false);
-
-
-        return root;
+        return inflater.inflate(R.layout.fragment_nearby, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        generalDestinationsVerticalAdapter =
-                new GeneralDestinationsVerticalAdapter(getContext(), new ArrayList<>()) ;
+
         RecyclerView verticalRecyclerView = view.findViewById(R.id.nearby_destinations__vertical_recyclerView);
         verticalRecyclerView.setHasFixedSize(true);
-        verticalRecyclerView.setLayoutManager(new LinearLayoutManager
-                (getContext(),RecyclerView.VERTICAL,false));
+        verticalRecyclerView.setLayoutManager
+                (new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
 
-        getLastKnownLocation();
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("ONRESUME_TAG", "onResume is called");
+        getLastKnownLocation();
+    }
 
     private void getPlacesByCoordinates(Location location){
 
@@ -104,6 +108,7 @@ public class NearbyLocationsFragment extends Fragment {
             if(!GroupedList.contains(destinationsList))
             GroupedList.add(destinationsList);
                     Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                    generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
                 });
 
         mainActivityViewModel.getRestaurantsByCoordinates(latitude,longitude).observe(getViewLifecycleOwner(),
@@ -111,6 +116,7 @@ public class NearbyLocationsFragment extends Fragment {
             if(!GroupedList.contains(destinationList2))
                 GroupedList.add(destinationList2);
                     Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                    generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
                 });
 
         mainActivityViewModel.getAttractionsByCoordinates(latitude,longitude).observe(getViewLifecycleOwner(),

@@ -30,6 +30,8 @@ public class TripAdvisorSource {
     private MutableLiveData<List<Destinations>> HotelSearchResult, restaurantSearchResult,
             attractionSearchResult;
     private MutableLiveData<String> locationId;
+    private final int RadiusOfRestaurantSearch = 10;
+    private final int RadiusOfAttractionSearch = 25;
 
 
 
@@ -121,7 +123,6 @@ public LiveData<List<Destinations>> getHotelDestinationResponse(String locationI
         return HotelSearchResult;
 }
 
-
 public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
         mTripAdvisorInterface.getRestaurantResponse(locationId)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
@@ -195,7 +196,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 }
 
  public LiveData<List<Destinations>> getRestaurantsByLatLng(double latitude, double longitude) {
-        mTripAdvisorInterface.getRestaurantResponseByLatLng(latitude,longitude)
+        mTripAdvisorInterface.getRestaurantResponseByLatLng(latitude,longitude,RadiusOfRestaurantSearch)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
                     @Override
                     public void onResponse(Call<DestinationSpecificResponse> call,
@@ -221,7 +222,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
     }
 
     public LiveData<List<Destinations>> getAttractionsByLatLng(double Lat, double Longitude){
-        mTripAdvisorInterface.getAttractionsResponseByLatLng(Lat,Longitude)
+        mTripAdvisorInterface.getAttractionsResponseByLatLng(Lat,Longitude,RadiusOfAttractionSearch)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
                     @Override
                     public void onResponse(Call<DestinationSpecificResponse> call,

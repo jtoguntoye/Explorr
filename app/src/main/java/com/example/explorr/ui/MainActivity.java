@@ -28,14 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //creation of the MainActivityComponent using the application graph
+        mainActivityComponent = ((myApplication) getApplicationContext())
+                .appComponent.mainActivityComponent().create();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.parent_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //creation of the MainActivityComponent using the application graph
-        mainActivityComponent = ((myApplication) getApplicationContext())
-                .appComponent.mainActivityComponent().create();
+
         mainActivityComponent.inject(this);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);

@@ -40,13 +40,15 @@ public interface TripAdvisorInterface {
     @GET("restaurants/list-by-latlng")
     Call<DestinationSpecificResponse> getRestaurantResponseByLatLng(
             @Query("latitude") double latitude,
-            @Query("longitude") double longitude
+            @Query("longitude") double longitude,
+            @Query("distance") int distance
     );
 
 
     @GET("attractions/list-by-latlng")
     Call<DestinationSpecificResponse> getAttractionsResponseByLatLng(
             @Query("latitude") double latitude,
-            @Query("longitude") double longitude
+            @Query("longitude") double longitude,
+            @Query("distance") int distance
     );
 }
