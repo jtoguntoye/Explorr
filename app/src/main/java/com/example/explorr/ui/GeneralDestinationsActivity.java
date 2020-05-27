@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,8 +36,8 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         ((myApplication) getApplicationContext()).appComponent.inject(this);
+        ViewModelProviders.of(this).get(GeneralDestinationsViewModel.class);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_general_destinations);

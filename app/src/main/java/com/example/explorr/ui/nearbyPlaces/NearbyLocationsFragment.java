@@ -20,6 +20,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,7 +71,7 @@ public class NearbyLocationsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
+        Log.d("Callback called:", "OnCreateView");
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         GroupedList = new ArrayList<>();
         generalDestinationsVerticalAdapter =
@@ -82,6 +84,7 @@ public class NearbyLocationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Log.d("Callback called:", "OnViewCreated");
 
         RecyclerView verticalRecyclerView = view.findViewById(R.id.nearby_destinations__vertical_recyclerView);
         verticalRecyclerView.setHasFixedSize(true);
@@ -99,11 +102,12 @@ public class NearbyLocationsFragment extends Fragment {
         getLastKnownLocation();
     }
 
+
     private void getPlacesByCoordinates(Location location){
 
         latitude = location.getLatitude();
         longitude  = location.getLongitude();
-        mainActivityViewModel.getHotelsByCoordinates(latitude,longitude).observe(getViewLifecycleOwner(),
+        mainActivityViewModel.getHotelsByCoordinates(latitude,longitude).observe(this,
                 (List<Destinations> destinationsList) -> {
             if(!GroupedList.contains(destinationsList))
             GroupedList.add(destinationsList);
@@ -111,7 +115,7 @@ public class NearbyLocationsFragment extends Fragment {
                     generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
                 });
 
-        mainActivityViewModel.getRestaurantsByCoordinates(latitude,longitude).observe(getViewLifecycleOwner(),
+        mainActivityViewModel.getRestaurantsByCoordinates(latitude,longitude).observe(this,
                 (List<Destinations> destinationList2)->{
             if(!GroupedList.contains(destinationList2))
                 GroupedList.add(destinationList2);
@@ -119,7 +123,7 @@ public class NearbyLocationsFragment extends Fragment {
                     generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
                 });
 
-        mainActivityViewModel.getAttractionsByCoordinates(latitude,longitude).observe(getViewLifecycleOwner(),
+        mainActivityViewModel.getAttractionsByCoordinates(latitude,longitude).observe(this,
                 (List<Destinations> destinationList3) ->{
             if(!GroupedList.contains(destinationList3))
             GroupedList.add(destinationList3);
@@ -141,6 +145,7 @@ public class NearbyLocationsFragment extends Fragment {
                         (task -> {
                             Location location = task.getResult();
                             if(location==null){
+                                Log.d("location null:", "requestNewLocation() method is called");
                                 requestNewLocationData();
                             }
                             else{
@@ -157,7 +162,10 @@ public class NearbyLocationsFragment extends Fragment {
                 startActivity(intent);
             }
         }
-        else {requestPermissions();}
+        else {
+            Log.d("permission request:","requestPermission() method will be called");
+            requestPermissions();
+        }
 
 
     }
@@ -165,7 +173,7 @@ public class NearbyLocationsFragment extends Fragment {
     private void requestNewLocationData() {
 
         LocationRequest locationRequest = new LocationRequest();
-        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setFastestInterval(0);
         locationRequest.setInterval(0);
         locationRequest.setNumUpdates(1);
@@ -180,7 +188,9 @@ public class NearbyLocationsFragment extends Fragment {
     private LocationCallback mLocationCallback = new LocationCallback(){
         @Override
         public void onLocationResult(LocationResult locationResult) {
-            getPlacesByCoordinates(locationResult.getLastLocation());
+            Log.d("LocationCallback","OnLocationResult is called");
+                Location mLocation = locationResult.getLastLocation();
+            getPlacesByCoordinates(mLocation);
 
         }
     };
@@ -214,6 +224,7 @@ public class NearbyLocationsFragment extends Fragment {
                 new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                 PERMISSION_ID
         );
+
     }
 
     private boolean isLocationEnabled(){
@@ -222,6 +233,24 @@ public class NearbyLocationsFragment extends Fragment {
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
                 locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d("ONDESTROYVIEW_TAG", "onDestroyView is called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("ONDESTROY_TAG", "onDestroy is called");
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d("ONDETACHED_TAG", "onDetached is called");
     }
 
 }
