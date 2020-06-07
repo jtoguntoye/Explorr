@@ -18,4 +18,5 @@
     <dimen name="detail_divider_height">3dp</dimen>
     <dimen name="margin_vertical_nav_fragment">5dp</dimen>
     <dimen name="margin_bottom_map_view">10dp</dimen>
+    <dimen name="vertical_margin_detail_textview">10dp</dimen>
 </resources>

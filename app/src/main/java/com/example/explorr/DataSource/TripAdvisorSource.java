@@ -132,7 +132,7 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
                                    Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
-                        if(!response.body().getPagingInfo().getResults().equals("0"))
+                        if(response.body().getDestinationsList().size()!=0)
                         restaurantSearchResult.postValue(response.body().getDestinationsList());
                     }
                 }
@@ -155,7 +155,7 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
                                    Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
-                        if(!response.body().getPagingInfo().getResults().equals("0"))
+                        if(response.body().getDestinationsList().size()!=0)
                         attractionSearchResult.postValue(response.body().getDestinationsList());
 
                     }
@@ -182,7 +182,8 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
 
                     if(response.isSuccessful()){
                         if(response.body()!=null){
-                            if(!response.body().getPagingInfo().getResults().equals("0"))
+                            //if(!response.body().getPagingInfo().getResults().equals("0"))
+                            if(response.body().getDestinationsList().size()!=0)
                             HotelSearchResult.postValue(response.body().getDestinationsList());
 
                         }

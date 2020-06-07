@@ -25,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/detail_image_margin"
-        android:layout_marginTop="@dimen/margin_vertical_nav_fragment"
+        android:layout_marginTop="@dimen/vertical_margin_detail_textview"
+        android:layout_marginBottom="@dimen/vertical_margin_detail_textview"
         android:layout_marginEnd="@dimen/detail_image_margin"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,6 +67,8 @@
         android:id="@+id/destination_description"
         android:layout_width="match_parent"
         android:layout_height="95dp"
+        android:layout_marginTop="@dimen/vertical_margin_detail_textview"
+        android:layout_marginBottom="@dimen/vertical_margin_detail_textview"
         android:layout_marginStart="@dimen/detail_image_margin"
         android:layout_marginEnd="@dimen/detail_image_margin"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,6 +78,9 @@
         app:layout_constraintTop_toBottomOf="@+id/divider1"
         app:layout_constraintVertical_bias="0.062"
         app:autoSizeTextType="uniform"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeMaxTextSize="16sp"
+        app:autoSizeStepGranularity="2sp"
         tools:text="TextView" />
 
     <View

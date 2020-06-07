@@ -22,8 +22,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkClientModule {
     private static volatile Retrofit retrofitInstance = null;
     private static String base_url= "https://tripadvisor1.p.rapidapi.com/";
-    //private static final String API_KEY = "4a7275b628msh5625a57913e87d3p164b25jsn5df82b134778";
-    private static final String API_KEY ="Your-trip-advisor api key";
+    private static final String API_KEY = "36d1e9ae71mshd8902c8317432f0p1dbba9jsn7db7ced9da8c";
+    //private static final String API_KEY ="Your-trip-advisor api key";
     private static final String host_name = "tripadvisor1.p.rapidapi.com";
 
 
