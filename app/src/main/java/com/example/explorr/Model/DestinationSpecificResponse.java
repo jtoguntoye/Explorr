@@ -9,15 +9,25 @@ public class DestinationSpecificResponse {
     @SerializedName("data")
     private List<Destinations> DestinationsList;
 
+    @SerializedName("paging")
+    private Paging pagingInfo;
+
     public List<Destinations> getDestinationsList() {
         return DestinationsList;
     }
 
-    public void setDestinationsList(List<Destinations> destinationsList) {
-        DestinationsList = destinationsList;
+    public Paging getPagingInfo() {
+        return pagingInfo;
     }
 
 
+    public class Paging {
+        @SerializedName("results")
+        private String results;
 
 
+         public String getResults() {
+             return results;
+         }
+     }
 }

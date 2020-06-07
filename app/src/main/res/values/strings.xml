@@ -7,8 +7,22 @@
     <string name="attractions_search">Search for attractions</string>
     <string name="search_hint">Search a location</string>
     <string name="search">Search</string>
-    <string name="destination_image">destination image</string>
+    <string name="destination_image">Destination Image</string>
     <string name="hotel_label">Hotels</string>
     <string name="restaurant_label">Restaurants</string>
     <string name="destinations_category_label">Destinations category</string>
+    <string name="title_activity_places_details">Places Details</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="default_category">Places</string>
+    <string name="favorites">Favorites</string>
+    <string name="address_not_available">Address not available</string>
+    <string name="desc_not_available">Overview not available</string>
+    <string name="add_to_favorites">Add to favorites</string>
 </resources>

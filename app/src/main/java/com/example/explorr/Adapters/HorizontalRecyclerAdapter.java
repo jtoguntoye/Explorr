@@ -79,8 +79,9 @@ public class HorizontalRecyclerAdapter  extends
 
             }
         }
+            //handle situations where the image is not available
             else{
-
+               locationThumbnail.setImageResource(R.color.colorPrimary);
             }
         }
 

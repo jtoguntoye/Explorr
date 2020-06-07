@@ -2,6 +2,7 @@ package com.example.explorr.Adapters;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.explorr.Model.Destinations;
+import com.example.explorr.PlacesDetailsActivity;
 import com.example.explorr.R;
 
 import java.util.List;
 
+import static com.example.explorr.PlacesDetailsActivity.PARCELED_DESTINATION;
+
 public class GeneralDestinationsVerticalAdapter extends
-        RecyclerView.Adapter<GeneralDestinationsVerticalAdapter.VerticalViewHolder>
-        {
+        RecyclerView.Adapter<GeneralDestinationsVerticalAdapter.VerticalViewHolder> {
 
     private Context context;
     private List<List<Destinations>> destinationGroupList;
@@ -59,12 +62,14 @@ public class GeneralDestinationsVerticalAdapter extends
     }
 
 
-    public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
+
+
+            public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
             HorizontalRecyclerAdapter.DestinationClickHandler{
 
         private TextView destinationCategory;
         private RecyclerView horizontalRecyclerView;
-
+        private List<Destinations> destinationsSpecificList;
 
 
         public VerticalViewHolder(@NonNull View itemView) {
@@ -75,11 +80,12 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
         public void bind(List<Destinations> destinationSpecificList) {
+            this.destinationsSpecificList = destinationSpecificList;
             if (destinationSpecificList.size() != 0) {
                 if (destinationSpecificList.get(0).getDestinationType() != null)
                     destinationCategory.setText(destinationSpecificList.get(0)
                             .getDestinationType());
-                else destinationCategory.setText("Places");
+                else destinationCategory.setText(R.string.default_category);
 
 
                 //Create an instance of the adapter for the horizontal recyclerview that
@@ -95,9 +101,12 @@ public class GeneralDestinationsVerticalAdapter extends
 
             }
         }
-        @Override
-        public void onDestinationClickListener(int position) {
+                @Override
+                public void onDestinationClickListener(int position) {
+                    Intent destinationDetailIntent = new Intent(context, PlacesDetailsActivity.class);
+                    destinationDetailIntent.putExtra(PARCELED_DESTINATION, destinationsSpecificList.get(position));
+                    context.startActivity(destinationDetailIntent);
 
-        }
+                }
     }
 }

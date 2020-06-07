@@ -12,4 +12,10 @@
     <dimen name="margin_top_labels">20dp</dimen>
     <dimen name="height_list_item_image">110dp</dimen>
     <dimen name="dimen_vertical_recycler_margin">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="detail_image_height">250dp</dimen>
+    <dimen name="detail_image_margin">4dp</dimen>
+    <dimen name="detail_divider_height">3dp</dimen>
+    <dimen name="margin_vertical_nav_fragment">5dp</dimen>
+    <dimen name="margin_bottom_map_view">10dp</dimen>
 </resources>

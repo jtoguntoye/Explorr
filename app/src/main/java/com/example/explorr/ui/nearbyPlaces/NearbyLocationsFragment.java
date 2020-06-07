@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -20,8 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.ViewModelProvider;
+
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,21 +29,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.explorr.Adapters.GeneralDestinationsVerticalAdapter;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.R;
-import com.example.explorr.ui.GeneralDestinationsActivity;
 import com.example.explorr.ui.MainActivity;
 import com.example.explorr.ui.MainActivityViewModel;
+import com.example.explorr.ui.MainActivityViewModelFactory;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
 import javax.inject.Inject;
 
 public class NearbyLocationsFragment extends Fragment {
@@ -53,12 +49,12 @@ public class NearbyLocationsFragment extends Fragment {
     private List<List<Destinations>> GroupedList;
 
     @Inject
-    MainActivityViewModel mainActivityViewModel;
+    MainActivityViewModelFactory ViewModelFactory;
+    private MainActivityViewModel mainActivityViewModel;
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
 
     //client object to use to get the user's location coordinates
     private FusedLocationProviderClient fusedLocationProviderClient;
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -69,9 +65,17 @@ public class NearbyLocationsFragment extends Fragment {
 
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         Log.d("Callback called:", "OnCreateView");
+
+      mainActivityViewModel = ViewModelProviders.of(this, ViewModelFactory).get(MainActivityViewModel.class);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         GroupedList = new ArrayList<>();
         generalDestinationsVerticalAdapter =
@@ -92,6 +96,12 @@ public class NearbyLocationsFragment extends Fragment {
                 (new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.detail_fav_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
 
     }
 
@@ -103,34 +113,37 @@ public class NearbyLocationsFragment extends Fragment {
     }
 
 
-    private void getPlacesByCoordinates(Location location){
+    private void getPlacesByCoordinates(){
+        //get the user's location from viewModel
+        mainActivityViewModel.getUserLocation().observe(this,location -> {
+            latitude = location.getLatitude();
+            longitude = location.getLongitude();
 
-        latitude = location.getLatitude();
-        longitude  = location.getLongitude();
-        mainActivityViewModel.getHotelsByCoordinates(latitude,longitude).observe(this,
-                (List<Destinations> destinationsList) -> {
-            if(!GroupedList.contains(destinationsList))
-            GroupedList.add(destinationsList);
-                    Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
-                    generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
-                });
+            mainActivityViewModel.getHotelsByCoordinates(latitude,longitude).observe(this,
+                    destinationsList -> {
+                        if(!GroupedList.contains(destinationsList))
+                            GroupedList.add(destinationsList);
+                        Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
+                    });
 
-        mainActivityViewModel.getRestaurantsByCoordinates(latitude,longitude).observe(this,
-                (List<Destinations> destinationList2)->{
-            if(!GroupedList.contains(destinationList2))
-                GroupedList.add(destinationList2);
-                    Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
-                    generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
-                });
+            mainActivityViewModel.getRestaurantsByCoordinates(latitude,longitude).observe(this,
+                    (List<Destinations> destinationList2)->{
+                        if(!GroupedList.contains(destinationList2))
+                            GroupedList.add(destinationList2);
+                        Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
+                    });
 
-        mainActivityViewModel.getAttractionsByCoordinates(latitude,longitude).observe(this,
-                (List<Destinations> destinationList3) ->{
-            if(!GroupedList.contains(destinationList3))
-            GroupedList.add(destinationList3);
-                    Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
-                    generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
-                });
+            mainActivityViewModel.getAttractionsByCoordinates(latitude,longitude).observe(this,
+                    (List<Destinations> destinationList3) ->{
+                        if(!GroupedList.contains(destinationList3))
+                            GroupedList.add(destinationList3);
+                        Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
+                    });
 
+        });
 
     }
 
@@ -149,7 +162,8 @@ public class NearbyLocationsFragment extends Fragment {
                                 requestNewLocationData();
                             }
                             else{
-                                getPlacesByCoordinates(location);
+                                mainActivityViewModel.setUserLocation(location);
+                                getPlacesByCoordinates();
                                 mLocation = location;
                                 Log.d("1stCoordinates", mLocation.getLatitude()+ "" +mLocation.getLongitude());
                             }
@@ -176,6 +190,7 @@ public class NearbyLocationsFragment extends Fragment {
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         locationRequest.setFastestInterval(0);
         locationRequest.setInterval(0);
+        //requesting one-time location update
         locationRequest.setNumUpdates(1);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         fusedLocationProviderClient.requestLocationUpdates(
@@ -189,8 +204,8 @@ public class NearbyLocationsFragment extends Fragment {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             Log.d("LocationCallback","OnLocationResult is called");
-                Location mLocation = locationResult.getLastLocation();
-            getPlacesByCoordinates(mLocation);
+                mainActivityViewModel.setUserLocation(locationResult.getLastLocation());
+            getPlacesByCoordinates();
 
         }
     };

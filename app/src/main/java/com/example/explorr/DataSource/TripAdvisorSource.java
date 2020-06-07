@@ -69,7 +69,7 @@ public class TripAdvisorSource {
     */
 
 
-        public LiveData<String> getLocationResponseId(String location){
+        public MutableLiveData<String> getLocationResponseId(String location){
 
             mTripAdvisorInterface.getLocationResponse(location).enqueue
         (new Callback<LocationSearchResponse>() {
@@ -99,7 +99,7 @@ return locationId;
 }
 
 
-public LiveData<List<Destinations>> getHotelDestinationResponse(String locationId){
+public MutableLiveData<List<Destinations>> getHotelDestinationResponse(String locationId){
 
         mTripAdvisorInterface.getHotelResponse(locationId)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
@@ -108,6 +108,7 @@ public LiveData<List<Destinations>> getHotelDestinationResponse(String locationI
                                    Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
+                        if(!response.body().getPagingInfo().getResults().equals("0"))
                         HotelSearchResult.postValue(response.body().getDestinationsList());
 
                     }
@@ -123,7 +124,7 @@ public LiveData<List<Destinations>> getHotelDestinationResponse(String locationI
         return HotelSearchResult;
 }
 
-public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
+public MutableLiveData<List<Destinations>> getRestaurantResponse(String locationId){
         mTripAdvisorInterface.getRestaurantResponse(locationId)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
@@ -131,6 +132,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
                                    Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
+                        if(!response.body().getPagingInfo().getResults().equals("0"))
                         restaurantSearchResult.postValue(response.body().getDestinationsList());
                     }
                 }
@@ -145,7 +147,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
         return restaurantSearchResult;
 }
 
-    public LiveData<List<Destinations>> getAttractionsResponse(String locationID) {
+    public MutableLiveData<List<Destinations>> getAttractionsResponse(String locationID) {
         mTripAdvisorInterface.getAttractionsResponse(locationID)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
             @Override
@@ -153,6 +155,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
                                    Response<DestinationSpecificResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body()!=null){
+                        if(!response.body().getPagingInfo().getResults().equals("0"))
                         attractionSearchResult.postValue(response.body().getDestinationsList());
 
                     }
@@ -179,6 +182,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 
                     if(response.isSuccessful()){
                         if(response.body()!=null){
+                            if(!response.body().getPagingInfo().getResults().equals("0"))
                             HotelSearchResult.postValue(response.body().getDestinationsList());
 
                         }
@@ -204,6 +208,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 
                         if(response.isSuccessful()){
                             if(response.body()!=null){
+                                if(!response.body().getPagingInfo().getResults().equals("0"))
                                 restaurantSearchResult.postValue(response.body().getDestinationsList());
 
                             }
@@ -230,6 +235,7 @@ public LiveData<List<Destinations>> getRestaurantResponse(String locationId){
 
                         if(response.isSuccessful()){
                             if(response.body()!=null){
+                                if(!response.body().getPagingInfo().getResults().equals("0"))
                                 attractionSearchResult.postValue(response.body().getDestinationsList());
 
                             }

@@ -1,8 +1,11 @@
 package com.example.explorr.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class DestinationPhotos {
+public class DestinationPhotos implements Parcelable {
 
     @SerializedName("images")
     private ImagesClass images;
@@ -12,113 +15,32 @@ public class DestinationPhotos {
     }
 
 
-    public class ImagesClass {
-
-        @SerializedName("small")
-        private SmallImage small;
-
-        @SerializedName("original")
-        private OriginalImage originalImage;
-
-
-        public SmallImage getSmall() {
-            return small;
-        }
-
-        public OriginalImage getOriginalImage() {
-            return originalImage;
-        }
-
-
-        public void setSmall(SmallImage small) {
-            this.small = small;
-        }
-
-        public void setOriginalImage(OriginalImage originalImage) {
-            this.originalImage = originalImage;
-        }
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public class SmallImage{
-        @SerializedName("width")
-        private String Width;
-
-        @SerializedName("height")
-        private String height;
-
-        @SerializedName("url")
-        private String Url;
-
-
-
-        public void setWidth(String width) {
-            Width = width;
-        }
-
-        public void setHeight(String height) {
-            this.height = height;
-        }
-
-        public void setUrl(String url) {
-            Url = url;
-        }
-
-
-        public String getWidth() {
-            return Width;
-        }
-
-        public String getHeight() {
-            return height;
-        }
-
-        public String getUrl() {
-            return Url;
-        }
-
-
-
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeParcelable(this.images, flags);
     }
 
-    public class OriginalImage {
-
-        @SerializedName("width")
-        private String Width;
-
-
-        @SerializedName("height")
-        private String height;
-
-        @SerializedName("url")
-        private String Url;
-
-
-        public void setWidth(String width) {
-            Width = width;
-        }
-
-        public void setHeight(String height) {
-            this.height = height;
-        }
-
-        public void setUrl(String url) {
-            Url = url;
-        }
-
-
-        public String getWidth() {
-            return Width;
-        }
-
-        public String getHeight() {
-            return height;
-        }
-
-        public String getUrl() {
-            return Url;
-        }
-
+    public DestinationPhotos() {
     }
 
+    protected DestinationPhotos(Parcel in) {
+        this.images = in.readParcelable(ImagesClass.class.getClassLoader());
+    }
 
+    public static final Parcelable.Creator<DestinationPhotos> CREATOR = new Parcelable.Creator<DestinationPhotos>() {
+        @Override
+        public DestinationPhotos createFromParcel(Parcel source) {
+            return new DestinationPhotos(source);
+        }
+
+        @Override
+        public DestinationPhotos[] newArray(int size) {
+            return new DestinationPhotos[size];
+        }
+    };
 }

@@ -1,8 +1,11 @@
 package com.example.explorr.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Destinations {
+public class Destinations implements Parcelable {
 
     @SerializedName("location_id")
     private String destinationId;
@@ -117,4 +120,51 @@ public class Destinations {
         this.destinationType = destinationType;
     }
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.destinationId);
+        dest.writeString(this.DestinationName);
+        dest.writeString(this.latitude);
+        dest.writeString(this.longitude);
+        dest.writeString(this.DestinationLocation);
+        dest.writeString(this.DestinationDescription);
+        dest.writeString(this.DestinationAddress);
+        dest.writeString(this.website);
+        dest.writeParcelable(this.photos, flags);
+        dest.writeString(this.destinationType);
+    }
+
+    public Destinations() {
+    }
+
+    protected Destinations(Parcel in) {
+        this.destinationId = in.readString();
+        this.DestinationName = in.readString();
+        this.latitude = in.readString();
+        this.longitude = in.readString();
+        this.DestinationLocation = in.readString();
+        this.DestinationDescription = in.readString();
+        this.DestinationAddress = in.readString();
+        this.website = in.readString();
+        this.photos = in.readParcelable(DestinationPhotos.class.getClassLoader());
+        this.destinationType = in.readString();
+    }
+
+    public static final Parcelable.Creator<Destinations> CREATOR = new Parcelable.Creator<Destinations>() {
+        @Override
+        public Destinations createFromParcel(Parcel source) {
+            return new Destinations(source);
+        }
+
+        @Override
+        public Destinations[] newArray(int size) {
+            return new Destinations[size];
+        }
+    };
 }
