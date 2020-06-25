@@ -5,8 +5,8 @@ import android.app.Application;
 import androidx.lifecycle.ViewModel;
 
 import com.example.explorr.DataSource.TripAdvisorSource;
-import com.example.explorr.ui.GeneralDestinationsViewModel;
-import com.example.explorr.ui.nearbyPlaces.GeneralDestinationsViewModelFactory;
+import com.example.explorr.ViewModel.GeneralDestinationsViewModel;
+import com.example.explorr.ViewModel.GeneralDestinationsViewModelFactory;
 
 import java.util.Map;
 
@@ -37,7 +37,7 @@ public class AppModule {
     @Provides
     @IntoMap
     @ViewModelKey(GeneralDestinationsViewModel.class)
-    ViewModel provideGeneralDestnationViewModel(TripAdvisorSource tripAdvisorSource){
+    ViewModel provideGeneralDestinationViewModel(TripAdvisorSource tripAdvisorSource){
     return new GeneralDestinationsViewModel(tripAdvisorSource);
     }
 

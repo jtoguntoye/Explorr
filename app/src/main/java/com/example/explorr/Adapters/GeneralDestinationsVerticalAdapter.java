@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.explorr.Model.Destinations;
-import com.example.explorr.PlacesDetailsActivity;
+import com.example.explorr.ui.PlacesDetailsActivity;
 import com.example.explorr.R;
 
 import java.util.List;
 
-import static com.example.explorr.PlacesDetailsActivity.PARCELED_DESTINATION;
+import static com.example.explorr.ui.PlacesDetailsActivity.PARCELED_DESTINATION;
 
 public class GeneralDestinationsVerticalAdapter extends
         RecyclerView.Adapter<GeneralDestinationsVerticalAdapter.VerticalViewHolder> {
@@ -26,11 +26,9 @@ public class GeneralDestinationsVerticalAdapter extends
     private Context context;
     private List<List<Destinations>> destinationGroupList;
 
-
     public GeneralDestinationsVerticalAdapter
             (Context context, List<List<Destinations>> GroupedList) {
         this.context = context;
-
         this.destinationGroupList = GroupedList;
     }
 
@@ -97,15 +95,17 @@ public class GeneralDestinationsVerticalAdapter extends
                         LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
 
                 horizontalRecyclerView.setAdapter(horizontalRecyclerAdapter);
-
-
             }
         }
                 @Override
                 public void onDestinationClickListener(int position) {
-                    Intent destinationDetailIntent = new Intent(context, PlacesDetailsActivity.class);
-                    destinationDetailIntent.putExtra(PARCELED_DESTINATION, destinationsSpecificList.get(position));
-                    context.startActivity(destinationDetailIntent);
+                 Intent destinationDetailIntent = new Intent(context, PlacesDetailsActivity.class);
+                 destinationDetailIntent.putExtra(PARCELED_DESTINATION, destinationsSpecificList.get(position));
+                 context.startActivity(destinationDetailIntent);
+
+
+
+
 
                 }
     }

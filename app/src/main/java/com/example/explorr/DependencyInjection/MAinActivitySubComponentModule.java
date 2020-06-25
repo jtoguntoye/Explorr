@@ -3,8 +3,9 @@ package com.example.explorr.DependencyInjection;
 import androidx.lifecycle.ViewModel;
 
 import com.example.explorr.DataSource.TripAdvisorSource;
-import com.example.explorr.ui.MainActivityViewModel;
-import com.example.explorr.ui.MainActivityViewModelFactory;
+import com.example.explorr.DestinationsRepository;
+import com.example.explorr.ViewModel.MainActivityViewModel;
+import com.example.explorr.ViewModel.MainActivityViewModelFactory;
 
 import java.util.Map;
 
@@ -27,8 +28,8 @@ public class MAinActivitySubComponentModule {
     @Provides
     @IntoMap
     @ViewModelKey(MainActivityViewModel.class)
-    ViewModel provideMainActivityViewModel(TripAdvisorSource tripAdvisorSource){
-        return new MainActivityViewModel(tripAdvisorSource);
+    ViewModel provideMainActivityViewModel(TripAdvisorSource tripAdvisorSource, DestinationsRepository repository){
+        return new MainActivityViewModel(tripAdvisorSource, repository);
     }
 
 

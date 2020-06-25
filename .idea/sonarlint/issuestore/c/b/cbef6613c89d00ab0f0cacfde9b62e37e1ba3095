@@ -1,0 +1,9 @@
+
+r
+java:S1450"WRemove the "favorite" field and declare it as a local variable in the relevant methods.(Ñ–ÂÕùÿÿÿÿ
+o
+java:S1450"YRemove the "mFavorites" field and declare it as a local variable in the relevant methods.(³ÈÖí
+B
+java:S1602$",Remove useless curly braces around statement(¯×Ú¨
+B
+java:S16021",Remove useless curly braces around statement(¯×Ú¨

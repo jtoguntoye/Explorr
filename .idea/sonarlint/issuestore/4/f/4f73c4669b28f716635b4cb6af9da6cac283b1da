@@ -1,0 +1,16 @@
+
+F
+java:S1066ä"/Merge this if statement with the enclosing one.(©§¹
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(û²ğ’ÿÿÿÿÿ
+p
+java:S14506"ZRemove the "groupedList" field and declare it as a local variable in the relevant methods.(í»Úâ
+=
+java:S1185K"(Remove this method to simply inherit it.(¥Ë©
+T
+java:S1172P"9Remove this unused method parameter "savedInstanceState".(©ó‘ãøÿÿÿÿ
+U
+java:S1874R":Remove this use of "ViewModelProviders"; it is deprecated.(ÿÂ²ˆúÿÿÿÿ
+E
+java:S1874R"*Remove this use of "of"; it is deprecated.(ÿÂ²ˆúÿÿÿÿ
+U
+java:S3398t"?Move this method into the anonymous class declared at line 210.(Ş£’ª

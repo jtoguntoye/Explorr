@@ -1,4 +1,4 @@
-package com.example.explorr.ui;
+package com.example.explorr.ViewModel;
 
 import android.app.Application;
 import android.util.Log;

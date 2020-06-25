@@ -1,4 +1,4 @@
-package com.example.explorr.ui;
+package com.example.explorr.ViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

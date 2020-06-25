@@ -15,7 +15,8 @@ import com.example.explorr.Adapters.GeneralDestinationsVerticalAdapter;
 import com.example.explorr.DependencyInjection.myApplication;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.R;
-import com.example.explorr.ui.nearbyPlaces.GeneralDestinationsViewModelFactory;
+import com.example.explorr.ViewModel.GeneralDestinationsViewModel;
+import com.example.explorr.ViewModel.GeneralDestinationsViewModelFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     GeneralDestinationsViewModelFactory generalDestinationsViewModelFactory;
     private GeneralDestinationsViewModel   generalDestinationsViewModel;
     private String locationId;
-    private List<List<Destinations>> GroupedList;
+    private List<List<Destinations>> groupedList;
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,11 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
         generalDestinationsViewModel = ViewModelProviders.of(this,generalDestinationsViewModelFactory)
                 .get(GeneralDestinationsViewModel.class);
-        GroupedList = new ArrayList<>();
+        groupedList = new ArrayList<>();
         Intent intent = getIntent();
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY);
-            Log.d("QUERYSTRING:", query);
+
 
 
 
@@ -67,38 +68,39 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     //helper method to get the locationID
     private void getLocationID(String query){
         //get location_id from TripAdvisor API
-        generalDestinationsViewModel.getLocationId(query).observe(this, (String s) -> {
-           locationId =s;
+        if (query!=null) {
+            Log.d("QUERYSTRING:", query);
+            generalDestinationsViewModel.getLocationId(query).observe(this, (String s) -> {
+                locationId = s;
 
-            Log.d("ActivityLocationID", locationId);
+                Log.d("ActivityLocationID", locationId);
 
-            //get the hotels, restaurants and attractions for the queried location
-            generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
-                    (List<Destinations> destinationList) ->{
-                if(!GroupedList.contains(destinationList))
-                        GroupedList.add(destinationList);
-                        Log.d("GroupedListSIZE",String.valueOf(GroupedList.size()) );
+                //get the hotels, restaurants and attractions for the queried location
+                generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
+                        (List<Destinations> destinationList) -> {
+                            if (!groupedList.contains(destinationList))
+                                groupedList.add(destinationList);
+                        });
+                Log.d("GroupedListSIZE", String.valueOf(groupedList.size()));
 
-                    });
+                generalDestinationsViewModel.getRestaurantResult(locationId).observe(this,
+                        (List<Destinations> destinationlist1) -> {
+                            if (!groupedList.contains(destinationlist1))
+                                groupedList.add(destinationlist1);
 
-            generalDestinationsViewModel.getRestaurantResult(locationId).observe(this,
-                    (List<Destinations> destinationlist1)->{
-                        if(!GroupedList.contains(destinationlist1))
-                GroupedList.add(destinationlist1);
-                Log.d("GroupSize:", String.valueOf(GroupedList.size()));
-                    });
+                        });
+                Log.d("GroupSize:", String.valueOf(groupedList.size()));
 
-            generalDestinationsViewModel.getAttractionsResult(locationId).observe(this,
-                    (List<Destinations> destinationlist2) ->{
-                        if(!GroupedList.contains(destinationlist2))
-                        GroupedList.add(destinationlist2);
-                        Log.d("GroupSize:", String.valueOf(GroupedList.size()));
-                        generalDestinationsVerticalAdapter.setAdapterGroupedList(GroupedList);
-                    });
+                generalDestinationsViewModel.getAttractionsResult(locationId).observe(this,
+                        (List<Destinations> destinationlist2) -> {
+                            if (!groupedList.contains(destinationlist2))
+                                groupedList.add(destinationlist2);
+                        });
+                generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
+                Log.d("GroupSize:", String.valueOf(groupedList.size()));
+            });
 
-        });
-
-
+        }
     }
 
 }

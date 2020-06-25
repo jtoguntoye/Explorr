@@ -3,6 +3,7 @@ package com.example.explorr.ui;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,10 +22,15 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import dagger.multibindings.IntoMap;
+
+import static androidx.navigation.Navigation.findNavController;
+
 public class MainActivity extends AppCompatActivity {
     //keep a reference to the MainComponent here since the MainComponent is attached to the
     //lifeycle of the MainActivity
      public MainActivityComponent mainActivityComponent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home, R.id.navigation_favorites, R.id.navigation_nearby_places)
                 .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavController navController = findNavController( this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
     }
@@ -61,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         //get the searchView and set the searchable configuration
         SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.search_icon).getActionView();
-        searchView.setSearchableInfo(searchManager != null ?
+        searchView.setSearchableInfo((searchManager != null) ?
                 searchManager.getSearchableInfo(new ComponentName(this, GeneralDestinationsActivity.class)) : null);
         return true;
     }

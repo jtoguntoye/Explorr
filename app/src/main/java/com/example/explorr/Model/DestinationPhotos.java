@@ -7,6 +7,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class DestinationPhotos implements Parcelable {
 
+    public DestinationPhotos() {
+    }
+
     @SerializedName("images")
     private ImagesClass images;
 
@@ -25,8 +28,7 @@ public class DestinationPhotos implements Parcelable {
         dest.writeParcelable(this.images, flags);
     }
 
-    public DestinationPhotos() {
-    }
+
 
     protected DestinationPhotos(Parcel in) {
         this.images = in.readParcelable(ImagesClass.class.getClassLoader());

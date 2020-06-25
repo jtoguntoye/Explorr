@@ -3,27 +3,48 @@ package com.example.explorr.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
+
+@Entity(tableName = "favorites_table")
 public class Destinations implements Parcelable {
 
+    public Destinations() {
+    }
+
+    @PrimaryKey
+    @NonNull
     @SerializedName("location_id")
     private String destinationId;
 
+    @ColumnInfo
     @SerializedName("name")
     private String DestinationName;
 
+    @ColumnInfo
     @SerializedName("latitude")
     private String latitude;
 
+    @ColumnInfo
     @SerializedName("longitude")
     private String longitude;
 
+    @ColumnInfo
     @SerializedName("location_string")
     private String DestinationLocation;
 
+    @ColumnInfo
     @SerializedName("description")
     private String DestinationDescription;
+
 
     @SerializedName("address")
     private String DestinationAddress;
@@ -31,6 +52,7 @@ public class Destinations implements Parcelable {
     @SerializedName("website")
     private String website;
 
+    @ColumnInfo
     @SerializedName("photo")
     private DestinationPhotos photos;
 
@@ -40,6 +62,7 @@ public class Destinations implements Parcelable {
     private String destinationType;
 
 
+    @NotNull
     public String getDestinationId() {
         return destinationId;
     }
@@ -140,11 +163,9 @@ public class Destinations implements Parcelable {
         dest.writeString(this.destinationType);
     }
 
-    public Destinations() {
-    }
 
     protected Destinations(Parcel in) {
-        this.destinationId = in.readString();
+        this.destinationId = Objects.requireNonNull(in.readString());
         this.DestinationName = in.readString();
         this.latitude = in.readString();
         this.longitude = in.readString();

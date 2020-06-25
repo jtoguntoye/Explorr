@@ -1,0 +1,8 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿¡šØıÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'android.content.Context'.(©Ê‰è
+X
+java:S1128"BRemove this unused import 'androidx.appcompat.view.menu.MenuView'.(È›¬
+r
+java:S1450:"WRemove the "imageUrl" field and declare it as a local variable in the relevant methods.(Õ¹µÔıÿÿÿÿ

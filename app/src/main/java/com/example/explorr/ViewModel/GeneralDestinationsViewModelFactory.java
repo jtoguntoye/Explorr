@@ -1,4 +1,4 @@
-package com.example.explorr.ui.nearbyPlaces;
+package com.example.explorr.ViewModel;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;

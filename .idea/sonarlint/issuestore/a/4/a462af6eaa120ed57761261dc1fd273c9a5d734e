@@ -1,0 +1,75 @@
+
+b
+java:S3973o"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
+c
+java:S3973‡"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
+c
+java:S3973"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
+c
+java:S3973º"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
+c
+java:S3973Ô"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
+c
+java:S3973ï"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
+E
+java:S1066n"/Merge this if statement with the enclosing one.(Á¢Ë
+J
+java:S1066o"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+F
+java:S1066†"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066‡"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+F
+java:S1066"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+F
+java:S1066¸"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066º"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+F
+java:S1066Ó"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066Ô"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+F
+java:S1066î"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066ï"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+Z
+java:S1155‡">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+Z
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+Z
+java:S1155º">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò •’şÿÿÿÿ
+>
+java:S1148]"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+>
+java:S1148x"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+?
+java:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+?
+java:S1148¨"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+?
+java:S1148Ä"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+?
+java:S1148Ş"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+?
+java:S1148ù"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+J
+java:S1128"4Remove this unused import 'android.content.Context'.(©Ê‰è
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
+J
+java:S1659"4Declare "restaurantSearchResult" on a separate line.(»Ü‘‰
+J
+java:S1659"4Declare "attractionSearchResult" on a separate line.(£Î×
+q	java:S116"\Rename this field "HotelSearchResult" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ü‘‰
+x	java:S116!"cRename this field "RadiusOfRestaurantSearch" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï„Íï
+}	java:S116""cRename this field "RadiusOfAttractionSearch" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤à£úÿÿÿÿ
+7
+java:S1170!"!Make this final field static too.(Ï„Íï
+<
+java:S1170""!Make this final field static too.(‹¤à£úÿÿÿÿ
+Q	java:S1252"<This block of commented-out lines of code should be removed.(–…¢Ÿ
+W	java:S125¹"<This block of commented-out lines of code should be removed.(Îø†úÿÿÿÿ

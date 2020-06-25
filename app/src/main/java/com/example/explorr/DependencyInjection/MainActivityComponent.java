@@ -1,6 +1,7 @@
 package com.example.explorr.DependencyInjection;
 
 import com.example.explorr.ui.MainActivity;
+import com.example.explorr.ui.favorites.FavoritesFragment;
 import com.example.explorr.ui.nearbyPlaces.NearbyLocationsFragment;
 
 import dagger.Subcomponent;
@@ -15,5 +16,6 @@ public interface MainActivityComponent {
     }
     void inject(MainActivity mainActivity);
     void inject(NearbyLocationsFragment nearbyLocationsFragment);
+    void inject(FavoritesFragment favoritesFragment);
 
 }

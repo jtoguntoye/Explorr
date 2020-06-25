@@ -1,0 +1,8 @@
+
+~
+java:S2637"c"destinationId" is marked "androidx.annotation.NonNull" but is not initialized in this constructor.(Ö®û„ýÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(üÿ‰·ÿÿÿÿÿ
+o	java:S116"ZRename this field "DestinationName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ÈŠÀ
+s	java:S116*"^Rename this field "DestinationLocation" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š‘Úó
+v	java:S116."aRename this field "DestinationDescription" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«ØÊí
+w	java:S1162"]Rename this field "DestinationAddress" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ó’Ÿúûÿÿÿÿ
