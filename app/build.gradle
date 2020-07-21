@@ -2,6 +2,12 @@ apply plugin: 'com.android.application'
 
 //plugin for type-safety during navigation between destinations
 apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'com.google.gms.google-services'
+
+//load the apiKey file
+def apikeyPropertiesFile = rootProject.file("apiKeys.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
     compileSdkVersion 29
@@ -13,6 +19,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     defaultConfig {
+        // should correspond to key/value pairs inside the file
+        buildConfigField("String", "TRIP_ADVISOR_API_KEY", apikeyProperties['TRIP-ADVISOR-KEY'])
+
+
         applicationId "com.example.explorr"
         minSdkVersion 21
         targetSdkVersion 29
@@ -63,6 +73,9 @@ dependencies {
     //add dagger2 dependencies
     implementation 'com.google.dagger:dagger:2.27'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
+
+    //Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

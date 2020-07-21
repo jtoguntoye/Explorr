@@ -19,4 +19,6 @@
     <dimen name="margin_vertical_nav_fragment">5dp</dimen>
     <dimen name="margin_bottom_map_view">10dp</dimen>
     <dimen name="vertical_margin_detail_textview">10dp</dimen>
+    <dimen name="margin_img_favorite_item_">4dp</dimen>
+    <dimen name="margin_empty_text">24dp</dimen>
 </resources>

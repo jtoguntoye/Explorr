@@ -1,10 +1,10 @@
 
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥Ê·şÿÿÿÿ
+n
+java:S1450"XRemove the "mFavorite" field and declare it as a local variable in the relevant methods.(ĞŸË
 F
 java:S1128"0Remove this unused import 'javax.inject.Inject'.(ì–íÔ
 T
 java:S1128"9Remove this unused import 'androidx.lifecycle.ViewModel'.(ÛÒÚ“úÿÿÿÿ
-~
-java:S1450"cRemove the "favoriteDestinations" field and declare it as a local variable in the relevant methods.(µ¸ùÿÿÿÿÿ
-n
-java:S1450"XRemove the "mFavorite" field and declare it as a local variable in the relevant methods.(ĞŸË
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¥Ê·şÿÿÿÿ
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8±ğÇµ.

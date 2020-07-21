@@ -61,7 +61,6 @@ public class GeneralDestinationsVerticalAdapter extends
 
 
 
-
             public  class VerticalViewHolder extends RecyclerView.ViewHolder implements
             HorizontalRecyclerAdapter.DestinationClickHandler{
 

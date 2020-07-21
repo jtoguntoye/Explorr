@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.explorr.Adapters.GeneralDestinationsVerticalAdapter;
+import com.example.explorr.ConnectivityUtils;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.R;
 import com.example.explorr.ui.MainActivity;
@@ -36,6 +38,7 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,9 +47,10 @@ import java.util.Objects;
 import javax.inject.Inject;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
 
 public class NearbyLocationsFragment extends Fragment {
-    public static final String GROUPED_LIST_SIZE = "GroupedListSIZE";
+
     private Location mLocation;
     private double latitude;
     private double longitude;
@@ -62,6 +66,9 @@ public class NearbyLocationsFragment extends Fragment {
 
     //client object to use to get the user's location coordinates
     private FusedLocationProviderClient fusedLocationProviderClient;
+    private boolean isConnected;
+    private CoordinatorLayout coordinatorLayout;
+    private View hostView;
 
 
     @Override
@@ -70,7 +77,6 @@ public class NearbyLocationsFragment extends Fragment {
 
         //obtain the dependency graph from the MainActivity and instantiate the @inject fields
         ((MainActivity) requireActivity()).mainActivityComponent.inject(this);
-
     }
 
     @Override
@@ -81,11 +87,15 @@ public class NearbyLocationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
+
         mainActivityViewModel = ViewModelProviders.of(this, viewModelFactory).get(MainActivityViewModel.class);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         groupedList = new ArrayList<>();
         generalDestinationsVerticalAdapter =
                 new GeneralDestinationsVerticalAdapter(getContext(), new ArrayList<>());
+
+        hostView = requireActivity().findViewById(android.R.id.content);
 
         return inflater.inflate(R.layout.fragment_nearby, container, false);
     }
@@ -94,8 +104,10 @@ public class NearbyLocationsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mProgressBar = view.findViewById(R.id.simpleProgressBar);
+        mProgressBar = view.findViewById(R.id.Progress_Bar);
         mProgressBar.setVisibility(View.VISIBLE);
+
+        isConnected = new ConnectivityUtils().checkConnectivity(requireActivity());
 
         RecyclerView verticalRecyclerView = view.findViewById(R.id.nearby_destinations__vertical_recyclerView);
         verticalRecyclerView.setHasFixedSize(true);
@@ -109,7 +121,6 @@ public class NearbyLocationsFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("ONRESUME_TAG", "onResume is called");
         getLastKnownLocation();
     }
 
@@ -125,7 +136,7 @@ public class NearbyLocationsFragment extends Fragment {
                         if (!groupedList.contains(destinationsList))
                             groupedList.add(destinationsList);
 
-                       mProgressBar.setVisibility(View.GONE);
+                        mProgressBar.setVisibility(View.GONE);
                         generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                     });
 
@@ -133,7 +144,6 @@ public class NearbyLocationsFragment extends Fragment {
                     (List<Destinations> destinationList2) -> {
                         if (!groupedList.contains(destinationList2))
                             groupedList.add(destinationList2);
-                        Log.d(GROUPED_LIST_SIZE, String.valueOf(groupedList.size()));
                         generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                     });
 
@@ -141,7 +151,7 @@ public class NearbyLocationsFragment extends Fragment {
                     (List<Destinations> destinationList3) -> {
                         if (!groupedList.contains(destinationList3))
                             groupedList.add(destinationList3);
-                        Log.d(GROUPED_LIST_SIZE, String.valueOf(groupedList.size()));
+
                         generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                     });
 
@@ -153,20 +163,33 @@ public class NearbyLocationsFragment extends Fragment {
      *  method to get the User's coordinates
      * */
     private void getLastKnownLocation() {
-        Log.d("Method called:", "getLastKnownLocation");
+        if(!isConnected){
+            mProgressBar.setVisibility(View.GONE);
+            Snackbar snackbar = Snackbar
+                    .make(hostView, R.string.Snack_bar_message, LENGTH_LONG)
+                    .setAction(R.string.snack_bar_action, v -> getLastKnownLocation());
+            snackbar.show();
+
+        }
         if (checkPermissions()) {
             if (isLocationEnabled()) {
+
+                if (ActivityCompat.checkSelfPermission(requireContext(),
+                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION)
+                                != PackageManager.PERMISSION_GRANTED) {
+
+                    return;
+                }
                 fusedLocationProviderClient.getLastLocation().addOnCompleteListener
                         (task -> {
                             Location location = task.getResult();
                             if (location == null) {
-                                Log.d("location null:", "requestNewLocation() method is called");
                                 requestNewLocationData();
                             } else {
                                 mainActivityViewModel.setUserLocation(location);
                                 getPlacesByCoordinates();
                                 mLocation = location;
-                                Log.d("1stCoordinates", mLocation.getLatitude() + "" + mLocation.getLongitude());
                             }
                         });
 
@@ -176,7 +199,7 @@ public class NearbyLocationsFragment extends Fragment {
                 startActivityForResult(intent, LOCATION_ENABLED_REQUEST_CODE);
             }
         } else {
-            Log.d("permission request:", "requestPermission() method will be called");
+
             requestPermissions();
         }
     }
@@ -184,7 +207,6 @@ public class NearbyLocationsFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("TAG", "onActivityResult: called.");
         if (requestCode == LOCATION_ENABLED_REQUEST_CODE) {
             getLastKnownLocation();
         }

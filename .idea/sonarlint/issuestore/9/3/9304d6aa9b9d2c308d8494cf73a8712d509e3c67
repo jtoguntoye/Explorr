@@ -1,7 +1,9 @@
 
-T
-java:S11725"9Remove this unused method parameter "savedInstanceState".(©Ûë„¯ˇˇˇˇ
-U
-java:S18746":Remove this use of "ViewModelProviders"; it is deprecated.(ˇ¬≤à˙ˇˇˇˇ
 E
-java:S18746"*Remove this use of "of"; it is deprecated.(ˇ¬≤à˙ˇˇˇˇ
+java:S18748"*Remove this use of "of"; it is deprecated.(ˇ¬≤à˙ˇˇˇˇ
+T
+java:S11727"9Remove this unused method parameter "savedInstanceState".(©Ûë„¯ˇˇˇˇ
+U
+java:S18748":Remove this use of "ViewModelProviders"; it is deprecated.(ˇ¬≤à˙ˇˇˇˇ
+[
+java:S1155U">Use isEmpty() to check whether the collection is empty or not.(”Â··8¿ Ñ¿µ.

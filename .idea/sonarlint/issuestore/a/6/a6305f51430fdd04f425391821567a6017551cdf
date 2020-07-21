@@ -1,35 +1,35 @@
 
 [
 java:S1128"ERemove this unused import 'com.example.explorr.ui.home.HomeFragment'.(øÆ„Š
-j
-java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ú†ÎÆ
-A
-java:S5411™"*Use the primitive boolean expression here.(œüëò
-E
-java:S16595"0Declare "destinationAddress" on a separate line.(ğÊ»
+\
+java:S1128%"ARemove this unused import 'androidx.lifecycle.ViewModelProvider'.(ª´÷©øÿÿÿÿ
+K
+java:S1066³"/Merge this if statement with the enclosing one.(Ø’µ•şÿÿÿÿ
+h
+java:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‹¢„$
+=
+java:S1172Ñ"&Remove these unused method parameters.(Å‚‚¦
 K
 java:S1172_")Remove this unused method parameter "id".(Ì™±¼üÿÿÿÿ8”Šÿä­.
 s
 java:S3252Ä"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ÇªÒ½ıÿÿÿÿ
-s
-java:S1128"XRemove this unused import 'com.example.explorr.ui.nearbyPlaces.NearbyLocationsFragment'.(µÒ¢àşÿÿÿÿ
-£
-java:S1186_"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì™±¼üÿÿÿÿ8”Šÿä­.
+n
+java:S3252Æ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ëè¦³
+A
+java:S5411™"*Use the primitive boolean expression here.(œüëò
 e
 java:S1128"ORemove this unused import 'com.example.explorr.ui.favorites.FavoritesFragment'.(Ó½Òç
-=
-java:S1172Ñ"&Remove these unused method parameters.(Å‚‚¦
-K
-java:S1066³"/Merge this if statement with the enclosing one.(Ø’µ•şÿÿÿÿ
+£
+java:S1186_"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ì™±¼üÿÿÿÿ8”Šÿä­.
+s
+java:S1128"XRemove this unused import 'com.example.explorr.ui.nearbyPlaces.NearbyLocationsFragment'.(µÒ¢àşÿÿÿÿ
+j
+java:S1128"TRemove this unnecessary import: same package classes are always implicitly imported.(ú†ÎÆ
 y
 java:S1128"^Remove this unused import 'com.google.android.material.bottomnavigation.BottomNavigationView'.(ºØÇÿÿÿÿÿ
-h
-java:S3776Î"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(‹¢„$
 U
 java:S1874V":Remove this use of "ViewModelProviders"; it is deprecated.(˜ùïóúÿÿÿÿ
 E
+java:S16595"0Declare "destinationAddress" on a separate line.(ğÊ»
+E
 java:S1874V"*Remove this use of "of"; it is deprecated.(˜ùïóúÿÿÿÿ
-\
-java:S1128%"ARemove this unused import 'androidx.lifecycle.ViewModelProvider'.(ª´÷©øÿÿÿÿ
-n
-java:S3252Æ"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ëè¦³

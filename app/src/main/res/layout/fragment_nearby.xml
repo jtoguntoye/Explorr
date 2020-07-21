@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinatorLayout_nearby_fragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -12,11 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/simpleProgressBar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
 
+            <ProgressBar
+                android:id="@+id/Progress_Bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="88dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/nearby_destinations__vertical_recyclerView"
@@ -29,4 +37,6 @@
                 app:layout_constraintTop_toTopOf="@+id/parent_container" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 

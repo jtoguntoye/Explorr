@@ -66,6 +66,7 @@ public class FavoritesAdapter extends RecyclerView.Adapter<FavoritesAdapter.Favo
 
             destinationName = itemView.findViewById(R.id.text_location_name);
             destinationImage = itemView.findViewById(R.id.favorite_image);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Destinations destinations){

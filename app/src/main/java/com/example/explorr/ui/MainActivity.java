@@ -2,8 +2,6 @@ package com.example.explorr.ui;
 
 import android.app.SearchManager;
 import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,12 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import dagger.multibindings.IntoMap;
-
 import static androidx.navigation.Navigation.findNavController;
 
 public class MainActivity extends AppCompatActivity {

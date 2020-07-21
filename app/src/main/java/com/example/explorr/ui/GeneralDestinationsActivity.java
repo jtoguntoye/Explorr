@@ -2,6 +2,7 @@ package com.example.explorr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,18 +11,22 @@ import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.explorr.Adapters.GeneralDestinationsVerticalAdapter;
+import com.example.explorr.ConnectivityUtils;
 import com.example.explorr.DependencyInjection.myApplication;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.R;
 import com.example.explorr.ViewModel.GeneralDestinationsViewModel;
 import com.example.explorr.ViewModel.GeneralDestinationsViewModelFactory;
-
+import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
+import static com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG;
+
 
 public class GeneralDestinationsActivity extends AppCompatActivity {
 
@@ -31,6 +36,11 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
     private String locationId;
     private List<List<Destinations>> groupedList;
     private GeneralDestinationsVerticalAdapter generalDestinationsVerticalAdapter;
+    private ProgressBar progressBar;
+    private boolean isConnected = false;
+    private CoordinatorLayout coordinatorLayout;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ((myApplication) getApplicationContext()).appComponent.inject(this);
@@ -44,20 +54,28 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                 .get(GeneralDestinationsViewModel.class);
         groupedList = new ArrayList<>();
         Intent intent = getIntent();
+
+        progressBar = findViewById(R.id.Progress_Bar);
+        progressBar.setVisibility(View.VISIBLE);
+        coordinatorLayout = findViewById(R.id.coordinatorLayout);
+
+        isConnected = new ConnectivityUtils().checkConnectivity(this);
+        Log.d("network state", ":"+ isConnected);
+
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY);
 
-
+            setTitle(query);
 
 
         generalDestinationsVerticalAdapter =
                 new GeneralDestinationsVerticalAdapter(this, new ArrayList<>()) ;
         RecyclerView verticalRecyclerView = findViewById(R.id.destinations__vertical_recyclerView);
+
         verticalRecyclerView.setHasFixedSize(true);
         verticalRecyclerView.setLayoutManager(new LinearLayoutManager
                 (this,RecyclerView.VERTICAL,false));
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
-
 
            getLocationID(query);
 
@@ -67,9 +85,16 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
     //helper method to get the locationID
     private void getLocationID(String query){
+
         //get location_id from TripAdvisor API
         if (query!=null) {
             Log.d("QUERYSTRING:", query);
+            if(!isConnected) {
+                Snackbar snackbar = Snackbar
+                        .make(coordinatorLayout, R.string.Snack_bar_message, LENGTH_LONG)
+                        .setAction(R.string.snack_bar_action, v -> getLocationID(query));
+                snackbar.show();
+            }
             generalDestinationsViewModel.getLocationId(query).observe(this, (String s) -> {
                 locationId = s;
 
@@ -77,9 +102,13 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
                 //get the hotels, restaurants and attractions for the queried location
                 generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
+
                         (List<Destinations> destinationList) -> {
                             if (!groupedList.contains(destinationList))
                                 groupedList.add(destinationList);
+                            progressBar.setVisibility(View.GONE);
+                            generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
+
                         });
                 Log.d("GroupedListSIZE", String.valueOf(groupedList.size()));
 
@@ -87,6 +116,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                         (List<Destinations> destinationlist1) -> {
                             if (!groupedList.contains(destinationlist1))
                                 groupedList.add(destinationlist1);
+                            generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
 
                         });
                 Log.d("GroupSize:", String.valueOf(groupedList.size()));
@@ -98,10 +128,13 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                         });
                 generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                 Log.d("GroupSize:", String.valueOf(groupedList.size()));
+
             });
 
         }
     }
+
+
 
 }
 

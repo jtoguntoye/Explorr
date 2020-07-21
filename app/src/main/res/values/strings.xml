@@ -26,11 +26,14 @@
     <string name="desc_not_available">Overview not available</string>
     <string name="add_to_favorites">Add to favorites</string>
 
-    <string name="google_maps_api_key" translatable="false">AIzaSyDExDNj4atHHzMXb_l_SDEGU2TEIRvfTgs</string>
     <string name="message_address_not_available">Address not available</string>
     <string name="message_overview_not_available">Overview not available</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorite_thumbnail">Favorite location thumbnail</string>
+    <string name="Snack_bar_message">Turn on network and retry</string>
+    <string name="snack_bar_action">Retry</string>
+    <string name="empty_favorites">You have not added any destination to favorites</string>
+
 </resources>

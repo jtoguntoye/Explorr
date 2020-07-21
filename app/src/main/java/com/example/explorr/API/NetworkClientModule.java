@@ -1,5 +1,10 @@
 package com.example.explorr.API;
 
+import android.app.Application;
+import android.content.Context;
+
+import com.example.explorr.BuildConfig;
+import com.example.explorr.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,8 +27,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkClientModule {
     private static volatile Retrofit retrofitInstance = null;
     private static String base_url= "https://tripadvisor1.p.rapidapi.com/";
-    private static final String API_KEY = "36d1e9ae71mshd8902c8317432f0p1dbba9jsn7db7ced9da8c";
-    //private static final String API_KEY ="Your-trip-advisor api key";
+
+    //INSERT YOUR OWN TRIP ADVISOR API KEY OBTAINED FROM RAPIDAPI.COM HERE BELOW
+    private static final String API_KEY = BuildConfig.TRIP_ADVISOR_API_KEY;
+
     private static final String host_name = "tripadvisor1.p.rapidapi.com";
 
 

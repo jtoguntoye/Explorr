@@ -1,10 +1,12 @@
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:cardUseCompatPadding="true"
     android:elevation="@dimen/cardview_default_elevation"
     xmlns:android="http://schemas.android.com/apk/res/android">
+
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,14 +25,15 @@
             tools:text="@string/app_name"/>
 
         <ImageView
-            android:scaleType="centerCrop"
             android:id="@+id/favorite_image"
-            android:layout_weight="90"
-            android:layout_width="match_parent"
+            android:layout_width="324dp"
             android:layout_height="0dp"
-            android:src="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin_img_favorite_item_"
+            android:layout_weight="90"
             android:contentDescription="@string/favorite_thumbnail"
-            />
+            android:scaleType="centerCrop"
+            android:src="@color/colorPrimary" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

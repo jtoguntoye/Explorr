@@ -3,11 +3,10 @@ package com.example.explorr.ui.favorites;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +37,8 @@ public class FavoritesFragment extends Fragment implements FavoritesAdapter.Dest
     private MainActivityViewModel mainActivityViewModel;
     private FavoritesAdapter favoritesAdapter;
     private List<Destinations> favoriteDestinationsList;
-
+    private RecyclerView verticalRecyclerView;
+    private TextView emptyFavoriteTextView;
 
 
     @Override
@@ -67,8 +67,9 @@ public class FavoritesFragment extends Fragment implements FavoritesAdapter.Dest
 
 
         favoritesAdapter = new FavoritesAdapter(new ArrayList<>(), this);
-
-        RecyclerView verticalRecyclerView = view.findViewById(R.id.favorite_recycler);
+        emptyFavoriteTextView = view.findViewById(R.id.empty_favorite_text);
+        verticalRecyclerView =
+                view.findViewById(R.id.favorite_recycler);
         verticalRecyclerView.setHasFixedSize(true);
         verticalRecyclerView.setLayoutManager
                 (new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
@@ -81,6 +82,10 @@ public class FavoritesFragment extends Fragment implements FavoritesAdapter.Dest
 
         mainActivityViewModel.getFavorites().observe(getViewLifecycleOwner(), destinationsList  -> {
 
+            if(destinationsList.size()==0){
+                verticalRecyclerView.setVisibility(View.GONE);
+                emptyFavoriteTextView.setVisibility(View.VISIBLE);
+            }
         favoritesAdapter.setFavoritesList(destinationsList);
         favoriteDestinationsList = destinationsList;
 
