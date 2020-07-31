@@ -280,12 +280,14 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
         if(item.getItemId() == R.id.add_to_favorites) {
             if(!isFavorites) {
                 placesDetailsViewModel.insertFavorite(destination);
+                Toast.makeText(this, R.string.message_favorite_added, Toast.LENGTH_SHORT).show();
                 item.setIcon(R.drawable.ic_favorite_black_24dp);
                 isFavorites = true;
             }
 
             else {
             placesDetailsViewModel.deleteFromFavorites(destination);
+            Toast.makeText(this, R.string.message_favorite_deleted, Toast.LENGTH_SHORT).show();
             item.setIcon(R.drawable.ic_favorite_border_24px);
             isFavorites = false;
             }
@@ -318,8 +320,8 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
-        googleMap.addMarker(new MarkerOptions().position
+        if(destination.getLongitude()!=null && destination.getLatitude()!=null)
+            googleMap.addMarker(new MarkerOptions().position
                 (new LatLng(Double.parseDouble(destination.getLatitude()), Double.parseDouble(destination.getLongitude()))));
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
         != PackageManager.PERMISSION_GRANTED
@@ -354,16 +356,18 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
                 }
 
 
-                if(destination.getDestinationAddress()!= null) {
-                    destinationAddress.setText(destination.getDestinationAddress());
+                if(destination.getDestinationAddress()!=null) {
+                    if(destination.getDestinationAddress().length()!=0)
+                        destinationAddress.setText(destination.getDestinationAddress());
                 }
                 else{
                     destinationAddress.setText(R.string.message_address_not_available);
                 }
-                if(destination.getDestinationDescription() !=null) {
-                    destinationDescription.setText(destination.getDestinationDescription());
+                if(destination.getDestinationDescription()!=null) {
+                    if(destination.getDestinationDescription().length()!= 0)
+                        destinationDescription.setText(destination.getDestinationDescription());
                 }
-                else{
+                 else{
                     destinationDescription.setText(R.string.message_overview_not_available);
                 }
             }

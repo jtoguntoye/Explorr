@@ -194,7 +194,7 @@ public class NearbyLocationsFragment extends Fragment {
                         });
 
             } else {
-                Toast.makeText(getContext(), "Turn on location", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.message_turn_on_location, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivityForResult(intent, LOCATION_ENABLED_REQUEST_CODE);
             }

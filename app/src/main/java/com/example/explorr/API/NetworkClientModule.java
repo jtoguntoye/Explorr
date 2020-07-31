@@ -58,7 +58,6 @@ public class NetworkClientModule {
 
                         return chain.proceed(newRequest);
                     }
-
                 })
                 .addInterceptor(loggingInterceptor).build();
         return customClient;
@@ -68,7 +67,7 @@ public class NetworkClientModule {
     @Provides
     public static Retrofit getRetrofitInstance(OkHttpClient customClient) {
 
-        if(retrofitInstance ==null){
+        if(retrofitInstance == null){
             synchronized (NetworkClientModule.class){
                 if(retrofitInstance ==null){
 

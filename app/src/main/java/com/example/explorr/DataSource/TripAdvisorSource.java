@@ -1,8 +1,5 @@
 package com.example.explorr.DataSource;
 
-import android.content.Context;
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -10,11 +7,9 @@ import com.example.explorr.API.TripAdvisorInterface;
 import com.example.explorr.Model.DestinationSpecificResponse;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.Model.LocationSearchResponse;
-import com.example.explorr.Model.Locations;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,8 +25,8 @@ public class TripAdvisorSource {
     private MutableLiveData<List<Destinations>> HotelSearchResult, restaurantSearchResult,
             attractionSearchResult;
     private MutableLiveData<String> locationId;
-    private final int RadiusOfRestaurantSearch = 10;
-    private final int RadiusOfAttractionSearch = 25;
+    private static final int RADIUS_OF_RESTAURANT_SEARCH = 10;
+    private static final int RADIUS_OF_ATTRACTION_SEARCH = 25;
 
 
 
@@ -61,7 +56,7 @@ public class TripAdvisorSource {
         locationId.postValue(Objects.requireNonNull(response.body()).getLocations().
                 get(0).getLocationObject().getLocation_id());
 
-            Log.d("Source resp:","size is" +response.body().getLocations().size());
+
             }
         }
 
@@ -161,7 +156,7 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
 
                     if(response.isSuccessful()){
                         if(response.body()!=null){
-                            //if(!response.body().getPagingInfo().getResults().equals("0"))
+
                             if(response.body().getDestinationsList().size()!=0)
                             HotelSearchResult.postValue(response.body().getDestinationsList());
 
@@ -180,7 +175,7 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
 }
 
  public LiveData<List<Destinations>> getRestaurantsByLatLng(double latitude, double longitude) {
-        mTripAdvisorInterface.getRestaurantResponseByLatLng(latitude,longitude,RadiusOfRestaurantSearch)
+        mTripAdvisorInterface.getRestaurantResponseByLatLng(latitude,longitude, RADIUS_OF_RESTAURANT_SEARCH)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
                     @Override
                     public void onResponse(Call<DestinationSpecificResponse> call,
@@ -207,7 +202,7 @@ public MutableLiveData<List<Destinations>> getRestaurantResponse(String location
     }
 
     public LiveData<List<Destinations>> getAttractionsByLatLng(double Lat, double Longitude){
-        mTripAdvisorInterface.getAttractionsResponseByLatLng(Lat,Longitude,RadiusOfAttractionSearch)
+        mTripAdvisorInterface.getAttractionsResponseByLatLng(Lat,Longitude, RADIUS_OF_ATTRACTION_SEARCH)
                 .enqueue(new Callback<DestinationSpecificResponse>() {
                     @Override
                     public void onResponse(Call<DestinationSpecificResponse> call,
