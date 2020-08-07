@@ -34,7 +34,7 @@
     <string name="favorite_thumbnail">Favorite location thumbnail</string>
     <string name="Snack_bar_message">Turn on network and retry</string>
     <string name="snack_bar_action">Retry</string>
-    <string name="empty_favorites">You have not added any destination to favorites</string>
+    <string name="empty_favorites">You have not added any destination to favorites!</string>
     <string name="message_favorite_deleted">Removed from favorites</string>
     <string name="message_favorite_added">Added to favorites</string>
     <string name="message_turn_on_location">Turn on location</string>

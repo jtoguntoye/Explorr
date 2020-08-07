@@ -36,6 +36,7 @@
         android:id="@+id/destination_detail_imageView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/detail_image_height"
+        android:layout_marginTop="20dp"
         android:layout_marginStart="@dimen/detail_image_margin"
         android:layout_marginEnd="@dimen/detail_image_margin"
         android:contentDescription="@string/destination_image"
