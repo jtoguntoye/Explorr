@@ -44,6 +44,8 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation 'org.jetbrains:annotations:16.0.2'
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
@@ -61,8 +63,10 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
-    //MultiSnap reyclerView dependency
-    implementation 'com.github.takusemba:multisnaprecyclerview:2.0.2'
+
+
+    // cardView dependency
+    implementation "androidx.cardview:cardview:1.0.0"
 
     //Adding Retrofit and Gson dependency
     implementation 'com.squareup.retrofit2:retrofit:2.7.0'

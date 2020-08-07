@@ -116,6 +116,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                         (List<Destinations> destinationlist1) -> {
                             if (!groupedList.contains(destinationlist1))
                                 groupedList.add(destinationlist1);
+                            progressBar.setVisibility(View.GONE);
                             generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
 
                         });
@@ -125,6 +126,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                         (List<Destinations> destinationlist2) -> {
                             if (!groupedList.contains(destinationlist2))
                                 groupedList.add(destinationlist2);
+                            progressBar.setVisibility(View.GONE);
                         });
                 generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                 Log.d("GroupSize:", String.valueOf(groupedList.size()));

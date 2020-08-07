@@ -112,7 +112,7 @@ public class NearbyLocationsFragment extends Fragment {
         RecyclerView verticalRecyclerView = view.findViewById(R.id.nearby_destinations__vertical_recyclerView);
         verticalRecyclerView.setHasFixedSize(true);
         verticalRecyclerView.setLayoutManager
-                (new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
+                (new LinearLayoutManager(getContext(),RecyclerView.VERTICAL, false));
         verticalRecyclerView.setAdapter(generalDestinationsVerticalAdapter);
 
     }
@@ -144,6 +144,7 @@ public class NearbyLocationsFragment extends Fragment {
                     (List<Destinations> destinationList2) -> {
                         if (!groupedList.contains(destinationList2))
                             groupedList.add(destinationList2);
+                        mProgressBar.setVisibility(View.GONE);
                         generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                     });
 
@@ -151,7 +152,7 @@ public class NearbyLocationsFragment extends Fragment {
                     (List<Destinations> destinationList3) -> {
                         if (!groupedList.contains(destinationList3))
                             groupedList.add(destinationList3);
-
+                        mProgressBar.setVisibility(View.GONE);
                         generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
                     });
 
