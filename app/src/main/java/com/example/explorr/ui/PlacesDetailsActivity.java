@@ -15,10 +15,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.explorr.Model.Destinations;
 import com.example.explorr.R;
 import com.example.explorr.ViewModel.PlacesDetailsViewModel;
-import com.example.explorr.ui.MainActivity;
-import com.example.explorr.ui.favorites.FavoritesFragment;
-import com.example.explorr.ui.home.HomeFragment;
-import com.example.explorr.ui.nearbyPlaces.NearbyLocationsFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,7 +22,6 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,10 +29,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -220,7 +212,7 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("TAG", "onActivityResult: called.");
+
         if (requestCode == LOCATION_ENABLE_REQUEST) {
             if (mLocationPermissionGranted) {
                mapView.getMapAsync(this);
@@ -231,18 +223,16 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
     }
 
     private boolean isServicesOK() {
-        Log.d("TAG", "isServicesOK: checking google services version");
+
 
         int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(this);
 
         if(available == ConnectionResult.SUCCESS){
             //everything is fine and the user can make map requests
-            Log.d("TAG", "isServicesOK: Google Play Services is working");
             return true;
         }
         else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             //an error occured but we can resolve it
-            Log.d("TAG", "isServicesOK: an error occured but we can fix it");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(this, available,
                     ERROR_DIALOG_REQUEST);
             dialog.show();

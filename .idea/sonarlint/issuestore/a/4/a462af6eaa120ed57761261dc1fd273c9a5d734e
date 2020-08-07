@@ -1,76 +1,63 @@
 
-J
-java:S1659"4Declare "attractionSearchResult" on a separate line.(£Î×
->
-java:S1148c"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
-F
-java:S1066£"/Merge this if statement with the enclosing one.(Á¢Ë
 ?
-java:S1148¯"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+java:S1148ª"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+E
+java:S1066T"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066Õ"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+b
+java:S3973U"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
+J
+java:S1066U"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+c
+java:S3973º"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
+Z
+java:S1155 ">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+K
+java:S1066º"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
+?
+java:S1148"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+Z
+java:S1155„">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+?
+java:S1148ß"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+F
+java:S1066Ô"/Merge this if statement with the enclosing one.(Á¢Ë
+F
+java:S1066¹"/Merge this if statement with the enclosing one.(Á¢Ë
+K
+java:S1066„"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+c
+java:S3973„"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
+c
+java:S3973 "GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ò •’şÿÿÿÿ
-c
-java:S3973Ú"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
-F
-java:S1066ˆ"/Merge this if statement with the enclosing one.(Á¢Ë
-E
-java:S1066q"/Merge this if statement with the enclosing one.(Á¢Ë
-q	java:S116"\Rename this field "HotelSearchResult" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ü‘‰
-Z
-java:S1155¥">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
-K
-java:S1066Ú"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
-J
-java:S1066Z"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
-c
-java:S3973¿"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
-J
-java:S1066r"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
-x	java:S116!"cRename this field "RadiusOfRestaurantSearch" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï„Íï
-}	java:S116""cRename this field "RadiusOfAttractionSearch" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹¤à£úÿÿÿÿ
-7
-java:S1170!"!Make this final field static too.(Ï„Íï
 >
-java:S1148z"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
-b
-java:S1128"@Remove this unused import 'com.example.explorr.Model.Locations'.(£ú¼„øÿÿÿÿ8ó©ä…°.
-W	java:S125¤"<This block of commented-out lines of code should be removed.(Îø†úÿÿÿÿ
-J
-java:S1659"4Declare "restaurantSearchResult" on a separate line.(»Ü‘‰
+java:S1148^"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
 K
-java:S1066‰"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
-b
-java:S3973r"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
-?
-java:S1148ä"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+java:S1066 "/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+F
+java:S1066"/Merge this if statement with the enclosing one.(Á¢Ë
+E
+java:S1066l"/Merge this if statement with the enclosing one.(Á¢Ë
 J
-java:S1128"4Remove this unused import 'android.content.Context'.(©Ê‰è
-b
-java:S3973Z"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
-c
-java:S3973¥"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
+java:S1066m"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
+F
+java:S1066ƒ"/Merge this if statement with the enclosing one.(Á¢Ë
 Y
-java:S1155r">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
-K
-java:S1066¥"/Merge this if statement with the enclosing one.(ş›Åûÿÿÿÿ
-F
-java:S1066Ù"/Merge this if statement with the enclosing one.(Á¢Ë
-Z
-java:S1155‰">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
-?
-java:S1148“"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
-F
-java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ
-F
-java:S1066¾"/Merge this if statement with the enclosing one.(Á¢Ë
-K
-java:S1066¿"/Merge this if statement with the enclosing one.(¯µõÃøÿÿÿÿ
-<
-java:S1170""!Make this final field static too.(‹¤à£úÿÿÿÿ
-c
-java:S3973‰"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ
-E
-java:S1066Y"/Merge this if statement with the enclosing one.(Á¢Ë
+java:S1155m">Use isEmpty() to check whether the collection is empty or not.(ş›Åûÿÿÿÿ
+J
+java:S1659"4Declare "restaurantSearchResult" on a separate line.(»Ü‘‰
 >
-java:S1148H"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+java:S1148u"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+J
+java:S1659"4Declare "attractionSearchResult" on a separate line.(£Î×
+c
+java:S3973Õ"GUse indentation to denote the code conditionally executed by this "if".(¯µõÃøÿÿÿÿ
 ?
-java:S1148É"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+java:S1148Ä"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+>
+java:S1148C"#Use a logger to log this exception.(¯Óí‘úÿÿÿÿ
+q	java:S116"\Rename this field "HotelSearchResult" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(»Ü‘‰
+b
+java:S3973m"GUse indentation to denote the code conditionally executed by this "if".(ş›Åûÿÿÿÿ

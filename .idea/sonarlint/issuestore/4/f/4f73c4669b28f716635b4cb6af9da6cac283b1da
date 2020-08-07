@@ -1,26 +1,26 @@
 
 z
-java:S3252á"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(®ª‰Ìùÿÿÿÿ8ï§Ğ¿µ.
-=
-java:S1185S"(Remove this method to simply inherit it.(¥Ë©
+java:S3252±"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ÊÂ†‡ùÿÿÿÿ8ï§Ğ¿µ.
 U
 java:S1874\":Remove this use of "ViewModelProviders"; it is deprecated.(ÿÂ²ˆúÿÿÿÿ
-E
-java:S1874\"*Remove this use of "of"; it is deprecated.(ÿÂ²ˆúÿÿÿÿ
-p
-java:S1450;"ZRemove the "groupedList" field and declare it as a local variable in the relevant methods.(í»Úâ
 ]
 java:S3398€"?Move this method into the anonymous class declared at line 237.(Ş£’ª8ÅéÇğ´.
-M
-java:S1066ÿ"/Merge this if statement with the enclosing one.(©§¹8ï§Ğ¿µ.
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(û²ğ’ÿÿÿÿÿ
-T
-java:S1172X"9Remove this unused method parameter "savedInstanceState".(©ó‘ãøÿÿÿÿ
-u
-java:S3252â"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(Í’ÂÚ8ÅéÇğ´.
+E
+java:S1874\"*Remove this use of "of"; it is deprecated.(ÿÂ²ˆúÿÿÿÿ
 W
 java:S1068F"5Remove this unused "coordinatorLayout" private field.(†šÒÓúÿÿÿÿ8·µ¡¿µ.
+T
+java:S1172X"9Remove this unused method parameter "savedInstanceState".(©ó‘ãøÿÿÿÿ
 z
 java:S3252³"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".( ôêıÿÿÿÿ8ï§Ğ¿µ.
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(û²ğ’ÿÿÿÿÿ
+p
+java:S1450;"ZRemove the "groupedList" field and declare it as a local variable in the relevant methods.(í»Úâ
 z
-java:S3252±"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(ÊÂ†‡ùÿÿÿÿ8ï§Ğ¿µ.
+java:S3252á"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(®ª‰Ìùÿÿÿÿ8ï§Ğ¿µ.
+u
+java:S3252â"WUse static access with "androidx.core.content.ContextCompat" for "checkSelfPermission".(Í’ÂÚ8ÅéÇğ´.
+=
+java:S1185S"(Remove this method to simply inherit it.(¥Ë©
+M
+java:S1066ÿ"/Merge this if statement with the enclosing one.(©§¹8ï§Ğ¿µ.

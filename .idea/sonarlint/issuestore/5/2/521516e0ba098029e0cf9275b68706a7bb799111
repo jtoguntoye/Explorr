@@ -1,7 +1,7 @@
 
 C	java:S1086")Either remove or fill this block of code.(·©µãÿÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿¡šØýÿÿÿÿ
 Y
 java:S11553">Use isEmpty() to check whether the collection is empty or not.(ˆÈº²úÿÿÿÿ
 T
 java:S1155Q">Use isEmpty() to check whether the collection is empty or not.( ãÄÇ
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿¡šØýÿÿÿÿ

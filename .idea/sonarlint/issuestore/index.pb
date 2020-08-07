@@ -65,8 +65,20 @@ A
 settings.gradle,0\5\05efc8b1657769a27696d478ded1e95f38737233
 @
 local.properties,0\7\0712df971a99ac4d2fccb8e0fb19f377f3374cca
-A
-apiKey.properties,4\c\4c721a8ffc8bc69326ce5530ef14eb815bf01e8f
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+d
+4app/src/main/res/drawable/ic_launcher_foreground.xml,5\8\587f297f0f0eaa1dcf927b2b5f0bc5430fadf54f
+h
+8app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml,6\e\6ec7d34b130497a10dc92abcde9b313d370a89df
+b
+2app/src/main/res/values/ic_launcher_background.xml,1\8\18ccc38e5dffe10da3d8b454d3093a0a4ba78749
+B
+apiKeys.properties,7\d\7df98657b4a10cb6526aeffe26df700347d1dd64
+s
+Capp/src/main/java/com/example/explorr/API/TripAdvisorInterface.java,6\e\6e31fb232a27157e60f9bd1e23e99b7498b07618
+z
+Japp/src/main/java/com/example/explorr/ViewModel/MainActivityViewModel.java,6\3\63e600af6963605219407439f4be01ebfe73c83f
+o
+?app/src/main/java/com/example/explorr/ui/home/HomeFragment.java,b\8\b86b1b4341c498e85b6cd007f729ff73ba2b0bbc

@@ -1,9 +1,9 @@
 
-E
-java:S18748"*Remove this use of "of"; it is deprecated.(ÿֲ²ˆתÿÿÿÿ
-T
-java:S11727"9Remove this unused method parameter "savedInstanceState".(©ף‘דרÿÿÿÿ
 U
 java:S18748":Remove this use of "ViewModelProviders"; it is deprecated.(ÿֲ²ˆתÿÿÿÿ
 [
 java:S1155U">Use isEmpty() to check whether the collection is empty or not.(׃ובב8ְÊ„ְµ.
+T
+java:S11727"9Remove this unused method parameter "savedInstanceState".(©ף‘דרÿÿÿÿ
+E
+java:S18748"*Remove this use of "of"; it is deprecated.(ÿֲ²ˆתÿÿÿÿ

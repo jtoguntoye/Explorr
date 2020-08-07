@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -60,7 +59,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
         isConnected = new ConnectivityUtils().checkConnectivity(this);
-        Log.d("network state", ":"+ isConnected);
+
 
         if(Intent.ACTION_SEARCH.equals(intent.getAction())){
             String query = intent.getStringExtra(SearchManager.QUERY);
@@ -88,7 +87,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
 
         //get location_id from TripAdvisor API
         if (query!=null) {
-            Log.d("QUERYSTRING:", query);
+
             if(!isConnected) {
                 Snackbar snackbar = Snackbar
                         .make(coordinatorLayout, R.string.Snack_bar_message, LENGTH_LONG)
@@ -98,7 +97,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
             generalDestinationsViewModel.getLocationId(query).observe(this, (String s) -> {
                 locationId = s;
 
-                Log.d("ActivityLocationID", locationId);
+
 
                 //get the hotels, restaurants and attractions for the queried location
                 generalDestinationsViewModel.getHotelListResult(locationId).observe(this,
@@ -110,7 +109,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                             generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
 
                         });
-                Log.d("GroupedListSIZE", String.valueOf(groupedList.size()));
+
 
                 generalDestinationsViewModel.getRestaurantResult(locationId).observe(this,
                         (List<Destinations> destinationlist1) -> {
@@ -120,7 +119,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                             generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
 
                         });
-                Log.d("GroupSize:", String.valueOf(groupedList.size()));
+
 
                 generalDestinationsViewModel.getAttractionsResult(locationId).observe(this,
                         (List<Destinations> destinationlist2) -> {
@@ -129,7 +128,7 @@ public class GeneralDestinationsActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                         });
                 generalDestinationsVerticalAdapter.setAdapterGroupedList(groupedList);
-                Log.d("GroupSize:", String.valueOf(groupedList.size()));
+
 
             });
 

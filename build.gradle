@@ -5,12 +5,15 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url "http://jcenter.bintray.com"}
         
     }
     dependencies {
         //add safe args gradle plugin for navigating between destinations
         def nav_version = "2.3.0-alpha06"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+        classpath "org.jetbrains:annotations:16.0.2"
 
         classpath 'com.android.tools.build:gradle:3.6.2'
         classpath 'com.google.gms:google-services:4.3.3'
@@ -25,7 +28,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "http://jcenter.bintray.com"}
+        maven { url "https://jitpack.io" }
     }
 }
 

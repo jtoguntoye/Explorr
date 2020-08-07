@@ -1,7 +1,7 @@
 
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿¡šØıÿÿÿÿ
 J
 java:S1128"4Remove this unused import 'android.content.Context'.(©Ê‰è
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¿¡šØıÿÿÿÿ
 X
 java:S1128"BRemove this unused import 'androidx.appcompat.view.menu.MenuView'.(È›¬
 r

@@ -9,7 +9,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -67,7 +65,6 @@ public class NearbyLocationsFragment extends Fragment {
     //client object to use to get the user's location coordinates
     private FusedLocationProviderClient fusedLocationProviderClient;
     private boolean isConnected;
-    private CoordinatorLayout coordinatorLayout;
     private View hostView;
 
 
@@ -238,7 +235,7 @@ public class NearbyLocationsFragment extends Fragment {
     private LocationCallback mLocationCallback = new LocationCallback(){
         @Override
         public void onLocationResult(LocationResult locationResult) {
-            Log.d("LocationCallback","OnLocationResult is called");
+
                 mainActivityViewModel.setUserLocation(locationResult.getLastLocation());
             getPlacesByCoordinates();
 
