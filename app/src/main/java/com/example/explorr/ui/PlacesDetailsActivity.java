@@ -197,11 +197,9 @@ public class PlacesDetailsActivity extends AppCompatActivity implements OnMapRea
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("This application requires GPS to work properly, do you want to enable it?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                      Intent enableGpsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                        startActivityForResult(enableGpsIntent, LOCATION_ENABLE_REQUEST);
-                    }
+                .setPositiveButton("Yes", (dialog, id) -> {
+                  Intent enableGpsIntent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(enableGpsIntent, LOCATION_ENABLE_REQUEST);
                 });
         final AlertDialog alert = builder.create();
         alert.show();

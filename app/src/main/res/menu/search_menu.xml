@@ -5,9 +5,17 @@
         android:id="@+id/search_icon"
         android:title="@string/search"
         android:icon="@drawable/ic_search_black_18dp"
+        app:iconTint="@color/icons"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="always">
+        app:showAsAction="always"/>
 
-    </item>
+        <item
+            android:id="@+id/privacy_policy"
+            android:title="@string/privacy_policy"
+            android:icon="@drawable/ic_baseline_info_24"
+            app:iconTint="@color/icons"
+            app:showAsAction="never"
+            />
+
 
 </menu>

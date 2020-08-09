@@ -5,13 +5,17 @@ import android.content.ComponentName;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 
 
 import com.example.explorr.DependencyInjection.MainActivityComponent;
 import com.example.explorr.DependencyInjection.myApplication;
 import com.example.explorr.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -41,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -66,5 +68,20 @@ public class MainActivity extends AppCompatActivity {
         searchView.setSearchableInfo((searchManager != null) ?
                 searchManager.getSearchableInfo(new ComponentName(this, GeneralDestinationsActivity.class)) : null);
         return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.privacy_policy) {
+
+            AlertDialog dialog =  new
+                    MaterialAlertDialogBuilder(this, R.style.AlertDialogTheme)
+                    .setTitle("Privacy Policy")
+                    .setMessage(R.string.privacy_policy_details)
+                    .setNegativeButton("Close",(dialog1, which) -> dialog1.cancel()).create();
+            dialog.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
