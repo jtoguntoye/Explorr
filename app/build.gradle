@@ -21,9 +21,7 @@ android {
     defaultConfig {
         // should correspond to key/value pairs inside the file
         buildConfigField("String", "TRIP_ADVISOR_API_KEY", apikeyProperties['TRIP-ADVISOR-KEY'])
-
-
-        applicationId "com.example.explorr"
+        applicationId "com.e.explorr"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
@@ -34,7 +32,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }

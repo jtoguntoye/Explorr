@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.explorr.ui.home.HomeFragment"
+        android:name="com.e.explorr.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
 
@@ -15,13 +15,13 @@
 
     <fragment
         android:id="@+id/navigation_favorites"
-        android:name="com.example.explorr.ui.favorites.FavoritesFragment"
+        android:name="com.e.explorr.ui.favorites.FavoritesFragment"
         android:label="@string/title_favorites"
         tools:layout="@layout/fragment_favorites" />
 
     <fragment
         android:id="@+id/navigation_nearby_places"
-        android:name="com.example.explorr.ui.nearbyPlaces.NearbyLocationsFragment"
+        android:name="com.e.explorr.ui.nearbyPlaces.NearbyLocationsFragment"
         android:label="@string/title_nearby"
         tools:layout="@layout/fragment_nearby" >
     </fragment>
