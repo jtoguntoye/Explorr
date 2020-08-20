@@ -3,8 +3,11 @@ package com.e.explorr.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class ImagesClass implements Parcelable {
 
     @SerializedName("small")

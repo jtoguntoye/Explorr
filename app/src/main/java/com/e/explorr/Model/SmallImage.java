@@ -3,8 +3,11 @@ package com.e.explorr.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class SmallImage implements Parcelable {
     @SerializedName("width")
     private String Width;

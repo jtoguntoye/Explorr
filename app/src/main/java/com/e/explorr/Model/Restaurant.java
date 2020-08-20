@@ -1,7 +1,10 @@
 package com.e.explorr.Model;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 class Restaurant {
 
 

@@ -3,6 +3,7 @@ package com.e.explorr.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -14,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+@Keep
 @Entity(tableName = "favorites_table")
 public class Destinations implements Parcelable {
 

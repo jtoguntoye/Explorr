@@ -1,7 +1,10 @@
 package com.e.explorr.Model;
 
+import androidx.annotation.Keep;
+
 import com.google.gson.annotations.SerializedName;
 
+@Keep
 public class Locations {
 
     @SerializedName("result_type")
@@ -21,6 +24,7 @@ public class Locations {
     }
 
 
+    @Keep
     public static class LocationObject {
 
         @SerializedName("name")
