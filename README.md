@@ -25,4 +25,4 @@ To fetch nearby Attractions, hotels and restaurants you will request data from t
  E.g  to get  the list of restaurants related to a location by location_id you will use the restaurants/list  endpoint
 
 You can place your API key in a keys file and make sure you do add the file to .gitignore so you do not post the API key on github or any other publicly available code repository
->>>>>>> 04f7fdcc4744cf15951c4a98ba638dbe681e1bdd
+>>>>>>> 
